@@ -27,7 +27,7 @@ module.exports = {
     "class-methods-use-this": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "no-plusplus": "off",
-    "no-console": "warn",
+    "no-console": "off",
     "import/no-extraneous-dependencies": ["off", { "devDependencies": ["**/*.test.tsx", "**/*.spec.js"] }],
     "import/extensions": 0,
     "max-len": ["warn", { "code": 12000 }],
@@ -60,7 +60,7 @@ module.exports = {
     parserOptions: {
       project: './src/tsconfig.spec.json',
     },
-   
+
     extends: ['plugin:jasmine/recommended'],
 
     plugins: ['jasmine'],
