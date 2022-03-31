@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FourOhFourComponent } from './four-oh-four.component';
+import { CreateCardComponent } from './create-card.component';
 
-describe('FourOhFourComponent', () => {
-  let component: FourOhFourComponent;
-  let fixture: ComponentFixture<FourOhFourComponent>;
+describe('CreateCardComponent', () => {
+  let component: CreateCardComponent;
+  let fixture: ComponentFixture<CreateCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FourOhFourComponent],
+      declarations: [CreateCardComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FourOhFourComponent);
+    fixture = TestBed.createComponent(CreateCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
