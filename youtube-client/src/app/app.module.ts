@@ -13,8 +13,12 @@ import { SearchSortingComponent } from './header/search-sorting/search-sorting.c
 import { CreateCardComponent } from './cards/create-card/create-card.component';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
 import { CardsListComponent } from './cards/cards-list/cards-list.component';
+<<<<<<< HEAD
 
 import { SelectedCardComponent } from './cards/selected-card/selected-card.component';
+=======
+import { ChangedCardComponent } from './cards/changed-card/changed-card.component';
+>>>>>>> b0167ec (refactor: change structure of project)
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +32,11 @@ import { SelectedCardComponent } from './cards/selected-card/selected-card.compo
     CreateCardComponent,
     UserProfileComponent,
     CardsListComponent,
+<<<<<<< HEAD
     SelectedCardComponent,
+=======
+    ChangedCardComponent,
+>>>>>>> b0167ec (refactor: change structure of project)
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
