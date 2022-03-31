@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-changed-card',
-  templateUrl: './changed-card.component.html',
-  styleUrls: ['./changed-card.component.scss'],
+  selector: 'app-selected-card',
+  templateUrl: './selected-card.component.html',
+  styleUrls: ['./selected-card.component.scss'],
 })
-export class ChangedCardComponent implements OnInit {
+export class SelectedCardComponent implements OnInit {
   // constructor() { }
 
   // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method

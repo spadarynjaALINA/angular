@@ -13,7 +13,8 @@ import { SearchSortingComponent } from './header/search-sorting/search-sorting.c
 import { CreateCardComponent } from './cards/create-card/create-card.component';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
 import { CardsListComponent } from './cards/cards-list/cards-list.component';
-import { ChangedCardComponent } from './cards/changed-card/changed-card.component';
+
+import { SelectedCardComponent } from './cards/selected-card/selected-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,7 @@ import { ChangedCardComponent } from './cards/changed-card/changed-card.componen
     CreateCardComponent,
     UserProfileComponent,
     CardsListComponent,
-    ChangedCardComponent,
+    SelectedCardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
