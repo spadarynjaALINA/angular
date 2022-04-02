@@ -14,7 +14,7 @@ import { CreateCardComponent } from './cards/create-card/create-card.component';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
 import { CardsListComponent } from './cards/cards-list/cards-list.component';
 
-import { CardPageComponent } from './card-page/card-page.component';
+import { CardPageComponent } from './cards/card-page/card-page.component';
 @NgModule({
   declarations: [
     AppComponent,
