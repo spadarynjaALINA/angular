@@ -3,33 +3,33 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CardComponent } from './card/card.component';
+import { CardComponent } from './cards/card/card.component';
 import { HeaderComponent } from './header/header.component';
 import { AuthComponent } from './auth/auth.component';
-import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { PageErrorComponent } from './page-error/page-error.component';
 import { LoginComponent } from './auth/login/login.component';
-import { LogoutComponent } from './auth/logout/logout.component';
 import { MainComponent } from './main/main.component';
-import { NewCardComponent } from './new-card/new-card.component';
-import { SearchItemComponent } from './search/search-item/search-item.component';
-import { SearchResultsComponent } from './search/search-results/search-results.component';
-import { SearchSortingComponent } from './search/search-sorting/search-sorting.component';
-import { SearchFilterComponent } from './search/search-filter/search-filter.component';
+import { SearchSortingComponent } from './header/search-sorting/search-sorting.component';
+import { CreateCardComponent } from './cards/create-card/create-card.component';
+import { UserProfileComponent } from './auth/user-profile/user-profile.component';
+import { CardsListComponent } from './cards/cards-list/cards-list.component';
+
+import { CardPageComponent } from './card-page/card-page.component';
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
     HeaderComponent,
     AuthComponent,
-    FourOhFourComponent,
     LoginComponent,
-    LogoutComponent,
     MainComponent,
-    NewCardComponent,
-    SearchItemComponent,
-    SearchResultsComponent,
     SearchSortingComponent,
-    SearchFilterComponent,
+    PageErrorComponent,
+    CreateCardComponent,
+    UserProfileComponent,
+    CardsListComponent,
+
+    CardPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

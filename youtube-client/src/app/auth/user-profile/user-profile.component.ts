@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-four-oh-four',
-  templateUrl: './four-oh-four.component.html',
-  styleUrls: ['./four-oh-four.component.scss'],
+  selector: 'app-user-profile',
+  templateUrl: './user-profile.component.html',
+  styleUrls: ['./user-profile.component.scss'],
 })
-export class FourOhFourComponent implements OnInit {
+export class UserProfileComponent implements OnInit {
   // constructor() { }
 
   // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
