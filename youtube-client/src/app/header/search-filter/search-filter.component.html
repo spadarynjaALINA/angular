@@ -1,0 +1,11 @@
+<div class="sorting">
+  <div class="sorting-buttons-wrap">
+    <span>Sorting by:</span>
+    <button class="sorting-date" id="dateSort" (click)="toggleSort($event)">date</button>
+    <button class="sorting-views" id="viewsSort" (click)="toggleSort($event)">count of views</button>
+  </div>
+  <div class="sorting-input-wrap">
+    <label for="panelFilter">by word or sentance</label>
+    <input type="text" id="panelFilter" (keyup)="inputPanelChange($event)">
+  </div>
+</div>

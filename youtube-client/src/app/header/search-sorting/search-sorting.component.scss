@@ -1,0 +1,28 @@
+.search {
+  margin: 0 10px;
+  input {
+    width: 396px;
+    height: 24px;
+    background: #efefef;
+    border: none;
+    &:focus-visible {
+      outline: none;
+    }
+  }
+  button {
+    width: 80px;
+    height: 24px;
+    background: #2f80ed;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    box-shadow: 2px 0px 4px 0px #2f80ed;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.5s;
+    &:hover {
+      background: #5ea2ff;
+      box-shadow: 2px 0px 4px 0px #5ea2ff;
+    }
+  }
+}

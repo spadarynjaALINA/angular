@@ -1,1 +1,6 @@
-<p>cards-list works!</p>
+<div class="card-list">
+  <app-mat-card
+    *ngFor="let card of cardsList.items | SearchPipe:searchValue | SearchPanelPipe:panelSearchValue | SearchSort:sortBy"
+    [card]="card">
+  </app-mat-card>
+</div>

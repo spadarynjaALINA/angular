@@ -1,1 +1,4 @@
-<p>search-sorting works!</p>
+<div class="search">
+  <input #searchInput type="text" placeholder="What are you want to find out?" (change)="inputChange($event)">
+  <button (click)="searchButton(searchInput.value)">search</button>
+</div>
