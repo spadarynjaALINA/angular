@@ -1,13 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-search-sorting',
   templateUrl: './search-sorting.component.html',
   styleUrls: ['./search-sorting.component.scss'],
 })
-export class SearchSortingComponent implements OnInit {
-  // constructor() { }
+export class SearchSortingComponent {
+  @Output() searchValueSubmit = new EventEmitter<string>();
 
-  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
-  ngOnInit(): void {}
+  private searchValue = '';
+
+  searchButton(searchValue: string) {
+
+    this.searchValueSubmit.emit(searchValue);
+  }
+
+  inputChange(event: Event) {
+    this.searchValue = (event.target as HTMLInputElement).value;
+  }
 }

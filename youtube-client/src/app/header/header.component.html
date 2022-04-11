@@ -1,1 +1,17 @@
-<p>header works!</p>
+<header>
+  <div class="header-wrap">
+    <div class="header-inner-wrap"><button class="logo"></button>
+      <app-search-sorting (searchValueSubmit)="inputChange($event)"></app-search-sorting>
+      <button class="settings" (click)="panelHidden()"></button>
+
+    </div>
+    <app-auth style="display:flex; flex-basis: 33%;justify-content: flex-end;"></app-auth>
+  </div>
+
+
+  <mat-expansion-panel hideToggle #panel>
+
+    <app-search-filter (panelValueSubmit)="inputPanelChange($event)" (sortBySubmit)="toggleSort($event)">
+    </app-search-filter>
+  </mat-expansion-panel>
+</header>
