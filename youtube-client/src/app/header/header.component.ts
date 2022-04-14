@@ -11,7 +11,7 @@ export class HeaderComponent {
 
   @Output() searchValueSubmit = new EventEmitter<string>();
 
-  @Output() panelValueSubmit = new EventEmitter<string>();
+  @Output() filterSubmit = new EventEmitter<string>();
 
   @Output() sortBySubmit = new EventEmitter<string>();
 
@@ -21,15 +21,15 @@ export class HeaderComponent {
     this.panel.toggle();
   }
 
-  inputChange(value: string) {
+  inputChange(value: string): void {
     this.searchValueSubmit.emit(value);
   }
 
-  inputPanelChange(value: string) {
-    this.panelValueSubmit.emit(value);
+  inputFilterChange(value: string): void {
+    this.filterSubmit.emit(value);
   }
 
-  toggleSort(value: string) {
+  toggleSort(value: string): void {
     this.sortBySubmit.emit(value);
   }
 }

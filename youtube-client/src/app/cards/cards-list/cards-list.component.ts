@@ -9,13 +9,9 @@ import { ISearchResponse } from './../../models/search-response.model';
 export class CardsListComponent {
   @Input() public searchValue: string;
 
-  @Input() public panelSearchValue: string;
+  @Input() public filterValue: string;
 
   @Input() public sortBy: string;
 
   cardsList: ISearchResponse = cardList;
-
-  clik() {
-    console.log(this.sortBy, cardList);
-  }
 }

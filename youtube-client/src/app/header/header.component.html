@@ -11,7 +11,7 @@
 
   <mat-expansion-panel hideToggle #panel>
 
-    <app-search-filter (panelValueSubmit)="inputPanelChange($event)" (sortBySubmit)="toggleSort($event)">
+    <app-search-filter (filterValueSubmit)="inputFilterChange($event)" (sortBySubmit)="toggleSort($event)">
     </app-search-filter>
   </mat-expansion-panel>
 </header>

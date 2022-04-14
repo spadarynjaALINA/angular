@@ -1,6 +1,6 @@
 <div class="container">
-  <app-header (searchValueSubmit)="searchValueUpdate($event)" (panelValueSubmit)="panelSearchValueUpdate($event)"
+  <app-header (searchValueSubmit)="searchValueUpdate($event)" (filterSubmit)="filterValueUpdate($event)"
     (sortBySubmit)="toggleSort($event)">
   </app-header>
-  <app-cards-list [searchValue]="searchValue" [panelSearchValue]="panelSearchValue" [sortBy]="sortBy"></app-cards-list>
+  <app-cards-list [searchValue]="searchValue" [filterValue]="filterValue" [sortBy]="sortBy"></app-cards-list>
 </div>

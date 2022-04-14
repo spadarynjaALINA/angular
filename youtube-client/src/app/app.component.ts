@@ -10,19 +10,19 @@ export class AppComponent {
 
   public searchValue = '';
 
-  public panelSearchValue = '';
+  public filterValue = '';
 
   public sortBy = '';
 
-  searchValueUpdate(value: string) {
+  searchValueUpdate(value: string): void {
     this.searchValue = value;
   }
 
-  panelSearchValueUpdate(value: string) {
-    this.panelSearchValue = value;
+  filterValueUpdate(value: string): void {
+    this.filterValue = value;
   }
 
-  toggleSort(value: string) {
+  toggleSort(value: string): void {
     this.sortBy = value;
   }
 }

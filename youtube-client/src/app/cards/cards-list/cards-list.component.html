@@ -1,6 +1,6 @@
 <div class="card-list">
   <app-mat-card
-    *ngFor="let card of cardsList.items | SearchPipe:searchValue | SearchPanelPipe:panelSearchValue | SearchSort:sortBy"
+    *ngFor="let card of cardsList.items | SearchPipe:searchValue | SearchPanelPipe:filterValue | SearchSort:sortBy"
     [card]="card">
   </app-mat-card>
 </div>

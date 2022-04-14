@@ -23,9 +23,7 @@ export class MatCardComponent {
 
   longText = 'More';
 
-  click() {}
-
-  getDate(a: string) {
+  getDate(a: string): number {
     return new Date(a).getTime();
   }
 }

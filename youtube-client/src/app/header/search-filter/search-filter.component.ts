@@ -6,22 +6,22 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./search-filter.component.scss'],
 })
 export class SearchFilterComponent {
-  @Output() panelValueSubmit = new EventEmitter<string>();
+  @Output() filterValueSubmit = new EventEmitter<string>();
 
   @Output() sortBySubmit = new EventEmitter<string>();
 
   @Output() isClickSubmit: undefined | boolean = undefined;
 
-  private panelInputValue = '';
+  private filterValue = '';
 
   private sortByType = '';
 
-  inputPanelChange(event: Event) {
-    this.panelInputValue = (event.target as HTMLInputElement).value;
-    this.panelValueSubmit.emit(this.panelInputValue);
+  inputFilterChange(event: Event): void {
+    this.filterValue = (event.target as HTMLInputElement).value;
+    this.filterValueSubmit.emit(this.filterValue);
   }
 
-  toggleSort(event: Event) {
+  toggleSort(event: Event): void {
     this.isClickSubmit = !this.isClickSubmit;
     if ((event.target as HTMLButtonElement).id === 'dateSort' && this.isClickSubmit === true) {
       this.sortByType = 'dateH';
