@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-search-filter',
-  templateUrl: './search-filter.component.html',
-  styleUrls: ['./search-filter.component.scss'],
+  selector: 'app-sort-filter',
+  templateUrl: './sort-filter.component.html',
+  styleUrls: ['./sort-filter.component.scss'],
 })
-export class SearchFilterComponent {
+export class SortFilterComponent {
   @Output() filterValueSubmit = new EventEmitter<string>();
 
   @Output() sortBySubmit = new EventEmitter<string>();
@@ -24,22 +24,22 @@ export class SearchFilterComponent {
   toggleSort(event: Event): void {
     this.isClickSubmit = !this.isClickSubmit;
     if ((event.target as HTMLButtonElement).id === 'dateSort' && this.isClickSubmit === true) {
-      this.sortByType = 'dateH';
+      this.sortByType = 'upDirDate';
     } else if (
       (event.target as HTMLButtonElement).id === 'dateSort' &&
       this.isClickSubmit === false
     ) {
-      this.sortByType = 'dateL';
+      this.sortByType = 'downDirDate';
     } else if (
       (event.target as HTMLButtonElement).id === 'viewsSort' &&
       this.isClickSubmit === true
     ) {
-      this.sortByType = 'viewsH';
+      this.sortByType = 'upDirViews';
     } else if (
       (event.target as HTMLButtonElement).id === 'viewsSort' &&
       this.isClickSubmit === false
     ) {
-      this.sortByType = 'viewsL';
+      this.sortByType = 'downDirViews';
     }
 
     this.sortBySubmit.emit(this.sortByType);

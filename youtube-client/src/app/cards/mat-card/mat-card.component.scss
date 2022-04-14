@@ -1,5 +1,7 @@
+$icon-height: 13px;
+$pic-width: 223px;
 .card {
-  width: 223px;
+  width: $pic-width;
   height: 307px;
   padding: 20px 20px 0px;
   background: #e5e5e5;
@@ -9,10 +11,10 @@
   margin-top: -21px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  width: 223px;
+  width: $pic-width;
 }
 .img-wrap {
-  width: 223px;
+  width: $pic-width;
   height: 123px;
   overflow: hidden;
 }
@@ -52,18 +54,18 @@ mat-card-title {
   text-align: right;
 }
 mat-icon {
-  font-size: 13px;
-  height: 13px;
+  font-size: $icon-height;
+  height: $icon-height;
   width: auto;
 }
 .mat-icon-button .mat-icon {
-  line-height: 13px;
+  line-height: $icon-height;
 }
 .mat-icon-button {
-  width: 13px;
-  height: 13px;
+  width: $icon-height;
+  height: $icon-height;
   flex-shrink: 0;
-  line-height: 13px;
+  line-height: $icon-height;
   span {
     font-size: 10px;
   }

@@ -1,3 +1,4 @@
+$color: #2f80ed;
 .sorting {
   width: 585px;
   margin: 0 auto;
@@ -10,14 +11,14 @@
     background: none;
     text-decoration: underline;
     cursor: pointer;
-    color: #2f80ed;
+    color: $color;
     transition: 0.5s;
     &:hover {
       color: #5ea2ff;
     }
   }
   label {
-    color: #2f80ed;
+    color: $color;
     margin: 0 10px;
   }
 }

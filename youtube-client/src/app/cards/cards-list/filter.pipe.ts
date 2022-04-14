@@ -2,9 +2,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { ISearchItem } from 'src/app/models/search-item.model';
 
 @Pipe({
-  name: 'SearchPanelPipe',
+  name: 'filter',
 })
-export class SearchPanelPipe implements PipeTransform {
+export class FilterPipe implements PipeTransform {
   transform(cardList: ISearchItem[], searchPanel: string = ''): ISearchItem[] {
     if (!searchPanel.trim()) {
       return cardList;

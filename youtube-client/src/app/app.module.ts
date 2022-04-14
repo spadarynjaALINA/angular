@@ -9,22 +9,23 @@ import { AuthComponent } from './auth/auth.component';
 import { PageErrorComponent } from './page-error/page-error.component';
 import { LoginComponent } from './auth/login/login.component';
 
-import { SearchSortingComponent } from './header/search-sorting/search-sorting.component';
+import { SearchComponent } from './header/search/search.component';
 import { CreateCardComponent } from './cards/create-card/create-card.component';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
 import { CardsListComponent } from './cards/cards-list/cards-list.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SearchFilterComponent } from './header/search-filter/search-filter.component';
+import { SortFilterComponent } from './header/sort-filter/sort-filter.component';
 import { MatCardComponent } from './cards/mat-card/mat-card.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { SearchPipe } from './cards/cards-list/card-list.pipe';
+import { SearchPipe } from './cards/cards-list/search.pipe';
 import { FormsModule } from '@angular/forms';
-import { SearchPanelPipe } from './cards/cards-list/panel-input.pipe';
-import { SearchSort } from './cards/cards-list/search-sort.pipe';
+import { FilterPipe } from './cards/cards-list/filter.pipe';
+import { SortPipe } from './cards/cards-list/sort.pipe';
+import { CardPageComponent } from './card-page/card-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,16 +33,17 @@ import { SearchSort } from './cards/cards-list/search-sort.pipe';
     AuthComponent,
     LoginComponent,
 
-    SearchSortingComponent,
+    SearchComponent,
     PageErrorComponent,
     CreateCardComponent,
     UserProfileComponent,
     CardsListComponent,
     SearchPipe,
-    SearchPanelPipe,
-    SearchSort,
-    SearchFilterComponent,
+    FilterPipe,
+    SortPipe,
+    SortFilterComponent,
     MatCardComponent,
+    CardPageComponent,
   ],
   imports: [
     BrowserModule,

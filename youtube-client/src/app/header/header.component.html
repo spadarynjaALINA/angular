@@ -1,17 +1,17 @@
 <header>
   <div class="header-wrap">
     <div class="header-inner-wrap"><button class="logo"></button>
-      <app-search-sorting (searchValueSubmit)="inputChange($event)"></app-search-sorting>
-      <button class="settings" (click)="panelHidden()"></button>
+      <app-search (searchValueSubmit)="inputChange($event)"></app-search>
+      <button class="settings" (click)="panelVisibleHandler()"></button>
 
     </div>
-    <app-auth style="display:flex; flex-basis: 25%;justify-content: flex-end;"></app-auth>
+    <app-auth></app-auth>
   </div>
 
 
   <mat-expansion-panel hideToggle #panel>
 
-    <app-search-filter (filterValueSubmit)="inputFilterChange($event)" (sortBySubmit)="toggleSort($event)">
-    </app-search-filter>
+    <app-sort-filter (filterValueSubmit)="inputFilterChange($event)" (sortBySubmit)="toggleSort($event)">
+    </app-sort-filter>
   </mat-expansion-panel>
 </header>

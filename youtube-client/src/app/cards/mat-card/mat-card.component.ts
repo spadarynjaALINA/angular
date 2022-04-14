@@ -21,8 +21,6 @@ export class MatCardComponent {
 
   dateSixMonthAgo = this.date2.setMonth(this.date2.getMonth() - 6);
 
-  longText = 'More';
-
   getDate(a: string): number {
     return new Date(a).getTime();
   }

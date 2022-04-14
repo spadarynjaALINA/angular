@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { ISearchItem } from 'src/app/models/search-item.model';
 
 @Pipe({
-  name: 'SearchPipe',
+  name: 'search',
 })
 export class SearchPipe implements PipeTransform {
   transform(cardList: ISearchItem[], search: string = ''): ISearchItem[] {

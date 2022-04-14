@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-search-sorting',
-  templateUrl: './search-sorting.component.html',
-  styleUrls: ['./search-sorting.component.scss'],
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.scss'],
 })
-export class SearchSortingComponent {
+export class SearchComponent {
   @Output() searchValueSubmit = new EventEmitter<string>();
 
   private searchValue = '';

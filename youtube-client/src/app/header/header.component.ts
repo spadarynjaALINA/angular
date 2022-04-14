@@ -17,7 +17,7 @@ export class HeaderComponent {
 
   @Output() isClickSubmit = new EventEmitter<undefined | boolean>();
 
-  public panelHidden() {
+  public panelVisibleHandler() {
     this.panel.toggle();
   }
 
