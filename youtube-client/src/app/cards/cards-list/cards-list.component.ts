@@ -1,13 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, Input } from '@angular/core';
+import * as cardList from './card-list.json';
+import { ISearchResponse } from './../../models/search-response.model';
 @Component({
   selector: 'app-cards-list',
   templateUrl: './cards-list.component.html',
   styleUrls: ['./cards-list.component.scss'],
 })
-export class CardsListComponent implements OnInit {
-  // constructor() { }
+export class CardsListComponent {
+  @Input() public searchValue: string;
 
-  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
-  ngOnInit(): void {}
+  @Input() public filterValue: string;
+
+  @Input() public sortBy: string;
+
+  cardsList: ISearchResponse = cardList;
 }

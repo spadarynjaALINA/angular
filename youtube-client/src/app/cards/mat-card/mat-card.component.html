@@ -1,0 +1,12 @@
+<mat-card class="card">
+  <div class="img-wrap"><img mat-card-image [src]="card.snippet.thumbnails.standard.url"></div>
+  <mat-card-actions>
+    <app-card-statistic [card]="card"></app-card-statistic>
+  </mat-card-actions>
+  <mat-card-title [style.fontSize]="card.snippet.title.length < 60?'20px':'18px'">
+    {{card.snippet.title}}</mat-card-title>
+  <mat-card-footer>
+    <button class="more">more...</button>
+    <span class="time-decor " [appColor]="card"></span>
+  </mat-card-footer>
+</mat-card>

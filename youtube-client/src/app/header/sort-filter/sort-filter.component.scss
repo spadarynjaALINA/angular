@@ -1,0 +1,35 @@
+$color: #2f80ed;
+.sorting {
+  width: 585px;
+  margin: 0 auto;
+  display: flex;
+  font-size: 12px;
+  color: #929292;
+  button {
+    margin: 0 10px;
+    border: none;
+    background: none;
+    text-decoration: underline;
+    cursor: pointer;
+    color: $color;
+    transition: 0.5s;
+    &:hover {
+      color: #5ea2ff;
+    }
+  }
+  label {
+    color: $color;
+    margin: 0 10px;
+  }
+}
+input {
+  outline: none;
+  border: none;
+  background: #fff;
+  height: 13px;
+  width: 150px;
+  &:focus-visible {
+    outline: none;
+    border: none;
+  }
+}

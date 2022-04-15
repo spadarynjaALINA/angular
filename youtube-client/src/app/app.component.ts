@@ -7,4 +7,22 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'youtube-client';
+
+  public searchValue = '';
+
+  public filterValue = '';
+
+  public sortBy = '';
+
+  searchValueUpdate(value: string): void {
+    this.searchValue = value;
+  }
+
+  filterValueUpdate(value: string): void {
+    this.filterValue = value;
+  }
+
+  toggleSort(value: string): void {
+    this.sortBy = value;
+  }
 }
