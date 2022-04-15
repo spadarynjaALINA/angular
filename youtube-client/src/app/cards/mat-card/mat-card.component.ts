@@ -8,20 +8,4 @@ import { ISearchItem } from 'src/app/models/search-item.model';
 })
 export class MatCardComponent {
   @Input() public card: ISearchItem;
-
-  date = new Date(Date.now());
-
-  dateMonthAgo = this.date.setMonth(this.date.getMonth() - 1);
-
-  date1 = new Date(Date.now());
-
-  dateWeek: number = this.date1.setDate(this.date1.getDate() - 7);
-
-  date2 = new Date(Date.now());
-
-  dateSixMonthAgo = this.date2.setMonth(this.date2.getMonth() - 6);
-
-  getDate(a: string): number {
-    return new Date(a).getTime();
-  }
 }

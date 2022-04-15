@@ -1,32 +1,12 @@
 <mat-card class="card">
   <div class="img-wrap"><img mat-card-image [src]="card.snippet.thumbnails.standard.url"></div>
-  <mat-card-actions><button mat-icon-button>
-      <mat-icon>visibility</mat-icon>
-      <span>{{card.statistics.viewCount}}</span>
-    </button>
-
-    <button mat-icon-button>
-      <mat-icon>favorite</mat-icon>
-      <span>{{card.statistics.likeCount}}</span>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>heart_broken</mat-icon>
-      <span>{{card.statistics.dislikeCount}}</span>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>forum</mat-icon>
-      <span>{{card.statistics.commentCount}}</span>
-    </button>
+  <mat-card-actions>
+    <app-card-statistic [card]="card"></app-card-statistic>
   </mat-card-actions>
   <mat-card-title [style.fontSize]="card.snippet.title.length < 60?'20px':'18px'">
     {{card.snippet.title}}</mat-card-title>
-  <mat-card-footer [ngSwitch]="true">
+  <mat-card-footer>
     <button class="more">more...</button>
-    <span *ngSwitchCase="getDate(card.snippet.publishedAt)  > dateWeek" class="time-decor blue"></span>
-    <span
-      *ngSwitchCase="getDate(card.snippet.publishedAt)> dateMonthAgo && getDate(card.snippet.publishedAt)< dateWeek "
-      class="time-decor green"></span>
-    <span *ngSwitchCase="getDate(card.snippet.publishedAt)< dateSixMonthAgo" class="time-decor red"></span>
-    <span *ngSwitchDefault class="time-decor"></span>
+    <span class="time-decor " [appColor]="card"></span>
   </mat-card-footer>
 </mat-card>

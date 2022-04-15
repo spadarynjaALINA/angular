@@ -1,5 +1,5 @@
 <div class="card-list">
   <app-mat-card *ngFor="let card of cardsList.items | search:searchValue | filter:filterValue | sort:sortBy"
-    [card]="card">
+    [card]="card" [appColor]="card">
   </app-mat-card>
 </div>

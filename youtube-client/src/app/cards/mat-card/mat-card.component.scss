@@ -53,23 +53,30 @@ mat-card-title {
   letter-spacing: 0em;
   text-align: right;
 }
-mat-icon {
-  font-size: $icon-height;
-  height: $icon-height;
-  width: auto;
+app-card-statistic {
+  margin-bottom: 0;
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+  margin: 0;
 }
-.mat-icon-button .mat-icon {
-  line-height: $icon-height;
-}
-.mat-icon-button {
-  width: $icon-height;
-  height: $icon-height;
-  flex-shrink: 0;
-  line-height: $icon-height;
-  span {
-    font-size: 10px;
-  }
-}
+// mat-icon {
+//   font-size: $icon-height;
+//   height: $icon-height;
+//   width: auto;
+// }
+// .mat-icon-button .mat-icon {
+//   line-height: $icon-height;
+// }
+// .mat-icon-button {
+//   width: $icon-height;
+//   height: $icon-height;
+//   flex-shrink: 0;
+//   line-height: $icon-height;
+//   span {
+//     font-size: 10px;
+//   }
+// }
 .more {
   background: #2f80ed;
   border-radius: 5px;

@@ -25,7 +25,9 @@ import { SearchPipe } from './cards/cards-list/search.pipe';
 import { FormsModule } from '@angular/forms';
 import { FilterPipe } from './cards/cards-list/filter.pipe';
 import { SortPipe } from './cards/cards-list/sort.pipe';
-import { CardPageComponent } from './card-page/card-page.component';
+import { CardPageComponent } from './cards/card-page/card-page.component';
+import { ColorDirective } from './cards/color.directive';
+import { CardStatisticComponent } from './cards/card-statistic/card-statistic.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +46,8 @@ import { CardPageComponent } from './card-page/card-page.component';
     SortFilterComponent,
     MatCardComponent,
     CardPageComponent,
+    ColorDirective,
+    CardStatisticComponent,
   ],
   imports: [
     BrowserModule,

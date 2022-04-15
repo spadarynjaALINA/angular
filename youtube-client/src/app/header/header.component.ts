@@ -29,7 +29,7 @@ export class HeaderComponent {
     this.filterSubmit.emit(value);
   }
 
-  toggleSort(value: string): void {
+  sortByToggle(value: string): void {
     this.sortBySubmit.emit(value);
   }
 }

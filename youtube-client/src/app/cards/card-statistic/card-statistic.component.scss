@@ -1,0 +1,18 @@
+$icon-height: 13px;
+mat-icon {
+  font-size: $icon-height;
+  height: $icon-height;
+  width: auto;
+}
+.mat-icon-button .mat-icon {
+  line-height: $icon-height;
+}
+.mat-icon-button {
+  width: auto;
+  height: $icon-height;
+  flex-shrink: 0;
+  line-height: $icon-height;
+  span {
+    font-size: 10px;
+  }
+}

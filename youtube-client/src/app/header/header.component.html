@@ -5,13 +5,13 @@
       <button class="settings" (click)="panelVisibleHandler()"></button>
 
     </div>
-    <app-auth></app-auth>
+    <app-user-profile></app-user-profile>
   </div>
 
 
   <mat-expansion-panel hideToggle #panel>
 
-    <app-sort-filter (filterValueSubmit)="inputFilterChange($event)" (sortBySubmit)="toggleSort($event)">
+    <app-sort-filter (filterValueSubmit)="inputFilterChange($event)" (sortBySubmit)=" sortByToggle($event)">
     </app-sort-filter>
   </mat-expansion-panel>
 </header>
