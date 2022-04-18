@@ -1,0 +1,22 @@
+.error-page {
+  width: 360px;
+  height: 100px;
+  margin: calc(50vh - 130px) calc(50vw - 180px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.error-pic {
+  background-image: url(./../../../../assets/svg/error-pic.svg);
+  width: 100px;
+  height: 91px;
+  background-size: cover;
+  margin-right: 27px;
+}
+.error-descr {
+  margin: 0;
+  font-size: 24px;
+  color: #828282;
+  font-weight: 700;
+  line-height: 28px;
+}

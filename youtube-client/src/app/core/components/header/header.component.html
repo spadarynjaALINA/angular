@@ -1,0 +1,17 @@
+<header>
+  <div class="header-wrap">
+    <div class="header-inner-wrap"><button class="logo" (click)="toMain()"></button>
+      <app-search></app-search>
+      <button class="settings" (click)="panelVisibleHandler()"></button>
+
+    </div>
+    <app-user-profile></app-user-profile>
+  </div>
+
+
+  <mat-expansion-panel hideToggle #panel>
+
+    <app-sort-filter>
+    </app-sort-filter>
+  </mat-expansion-panel>
+</header>
