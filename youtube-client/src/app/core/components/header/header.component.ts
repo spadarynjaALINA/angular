@@ -15,8 +15,4 @@ export class HeaderComponent {
   public panelVisibleHandler() {
     this.panel.toggle();
   }
-
-  toMain() {
-    this.router.navigate(['/']);
-  }
 }

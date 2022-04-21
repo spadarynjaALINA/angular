@@ -1,5 +1,4 @@
 import { Directive, ElementRef, Input } from '@angular/core';
-import { ISearchItem } from '../models/search-item.model';
 
 @Directive({
   selector: '[appColor]',
@@ -21,8 +20,8 @@ export class ColorDirective {
 
   dateSixMonthAgo = this.date2.setMonth(this.date2.getMonth() - 6);
 
-  @Input('appColor') set setColor(card: ISearchItem) {
-    this.published = new Date(card.snippet.publishedAt).getTime();
+  @Input('appColor') set setColor(publishedAt: Date | string) {
+    this.published = new Date(publishedAt).getTime();
     if (this.published > this.dateWeek) {
       this.elementRef.nativeElement.style.backgroundColor = 'blue';
     }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { CardsListComponent } from './pages/cards-list/cards-list.component';
+import { CardsListPageComponent } from './pages/cards-list-page/cards-list-page.component';
 import { MatCardComponent } from './components/mat-card/mat-card.component';
 import { ColorDirective } from './directives/color.directive';
 import { CardStatisticComponent } from './components/card-statistic/card-statistic.component';
@@ -16,7 +16,7 @@ import { YoutubeRoutingModule } from './youtube-routing.module';
 
 @NgModule({
   declarations: [
-    CardsListComponent,
+    CardsListPageComponent,
     MatCardComponent,
     ColorDirective,
     CardStatisticComponent,

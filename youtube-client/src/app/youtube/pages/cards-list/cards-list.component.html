@@ -1,6 +1,0 @@
-<div class="card-list">
-  <app-mat-card
-    *ngFor="let card of cardList.items  | search:searchString | filter:filterString | sort:sortBy, let id=index"
-    [card]="card" [appColor]="card" [id]="id">
-  </app-mat-card>
-</div>

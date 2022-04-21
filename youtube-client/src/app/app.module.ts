@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { YoutubeService } from './youtube/services/youtube.service';
-import { AuthGuard } from './core/guards/auth.guard';
+import { AuthGuard } from './auth/guards/auth.guard';
 import { CoreModule } from './core/core.module';
 
 @NgModule({

@@ -7,11 +7,11 @@ import { AuthService } from '../../auth/services/auth.service';
 })
 export class ProtectedDirective {
   constructor(
-    private _authService: AuthService,
+    private authService: AuthService,
     private router: Router,
     private location: Location,
   ) {
-    if (!_authService.isAuth()) {
+    if (!authService.isAuth()) {
       this.location.replace('/');
       this.router.navigate(['LoginComponent']);
     }

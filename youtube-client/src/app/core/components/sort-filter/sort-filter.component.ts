@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { YoutubeService } from '../../../youtube/services/youtube.service';
-
+import {
+  UP_DIRECTION_DATE,
+  DOWN_DIRECTION_DATE,
+  UP_DIRECTION_VIEWS,
+  DOWN_DIRECTION_VIEWS,
+} from './../../../constants';
 @Component({
   selector: 'app-sort-filter',
   templateUrl: './sort-filter.component.html',
@@ -8,9 +13,6 @@ import { YoutubeService } from '../../../youtube/services/youtube.service';
 })
 export class SortFilterComponent {
   constructor(public youtubeService: YoutubeService) {}
-  // @Output() filterValueSubmit = new EventEmitter<string>();
-
-  // @Output() sortBySubmit = new EventEmitter<string>();
 
   public toggleSortBtn: undefined | boolean = undefined;
 
@@ -18,41 +20,31 @@ export class SortFilterComponent {
 
   private sortByType = '';
 
-  public UP_DIRECTION_DATE = 'upDirDate';
-
-  public DOWN_DIRECTION_DATE = 'downDirDate';
-
-  public UP_DIRECTION_VIEWS = 'upDirViews';
-
-  public DOWN_DIRECTION_VIEWS = 'downDirViews';
-
   inputFilterChange(event: Event): void {
     this.filterValue = (event.target as HTMLInputElement).value;
     this.youtubeService.filterString.next(this.filterValue);
-    console.log(this.filterValue, 'filter value');
   }
 
   toggleSort(event: Event): void {
     this.toggleSortBtn = !this.toggleSortBtn;
     if ((event.target as HTMLButtonElement).id === 'dateSort' && this.toggleSortBtn === true) {
-      this.sortByType = this.UP_DIRECTION_DATE;
+      this.sortByType = UP_DIRECTION_DATE;
     } else if (
       (event.target as HTMLButtonElement).id === 'dateSort' &&
       this.toggleSortBtn === false
     ) {
-      this.sortByType = this.DOWN_DIRECTION_DATE;
+      this.sortByType = DOWN_DIRECTION_DATE;
     } else if (
       (event.target as HTMLButtonElement).id === 'viewsSort' &&
       this.toggleSortBtn === true
     ) {
-      this.sortByType = this.UP_DIRECTION_VIEWS;
+      this.sortByType = UP_DIRECTION_VIEWS;
     } else if (
       (event.target as HTMLButtonElement).id === 'viewsSort' &&
       this.toggleSortBtn === false
     ) {
-      this.sortByType = this.DOWN_DIRECTION_VIEWS;
+      this.sortByType = DOWN_DIRECTION_VIEWS;
     }
     this.youtubeService.sortBy.next(this.sortByType);
-    console.log(this.sortByType, 'sort by type');
   }
 }

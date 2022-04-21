@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './core/guards/auth.guard';
-import { CardPageComponent } from './youtube/pages/card-page/card-page.component';
-
+import { AuthGuard } from './auth/guards/auth.guard';
 import { PageErrorComponent } from './core/pages/page-error/page-error.component';
+import { YoutubeModule } from './youtube/youtube.module';
+import { AuthModule } from './auth/auth.module';
 
 const routes: Routes = [
   {
-    path: '',
-    loadChildren: () => import('./youtube/youtube.module').then((x) => x.YoutubeModule),
-    canActivate: [AuthGuard],
+    path: 'authorization',
+    loadChildren: (): Promise<AuthModule> => import('./auth/auth.module').then((x) => x.AuthModule),
   },
   {
-    path: 'authorization',
-    loadChildren: () => import('./auth/auth.module').then((x) => x.AuthModule),
+    path: '',
+    loadChildren: (): Promise<YoutubeModule> =>
+      import('./youtube/youtube.module').then((x) => x.YoutubeModule),
+    canActivate: [AuthGuard],
   },
-  { path: 'card/:index', canActivate: [AuthGuard], component: CardPageComponent },
   { path: '**', component: PageErrorComponent },
 ];
 

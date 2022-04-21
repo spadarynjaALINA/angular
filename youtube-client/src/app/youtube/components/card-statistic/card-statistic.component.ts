@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ISearchItem } from 'src/app/youtube/models/search-item.model';
+import { IStatistics } from 'src/app/youtube/models/search-item.model';
 
 @Component({
   selector: 'app-card-statistic',
@@ -7,5 +7,5 @@ import { ISearchItem } from 'src/app/youtube/models/search-item.model';
   styleUrls: ['./card-statistic.component.scss'],
 })
 export class CardStatisticComponent {
-  @Input() public card: ISearchItem;
+  @Input() public card: IStatistics;
 }

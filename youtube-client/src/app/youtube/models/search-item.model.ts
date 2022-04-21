@@ -27,7 +27,7 @@ interface ISnippet {
   localized: ILocalized;
   defaultAudioLanguage: string;
 }
-interface IStatistics {
+export interface IStatistics {
   viewCount: string;
   likeCount: string;
   dislikeCount: string;

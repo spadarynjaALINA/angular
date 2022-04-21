@@ -7,14 +7,12 @@ import { YoutubeService } from '../../../youtube/services/youtube.service';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent {
-  // @Output() searchValueSubmit = new EventEmitter<string>();
-
   constructor(public youtubeService: YoutubeService) {}
 
   private searchValue = '';
 
-  search(input: HTMLInputElement): void {
-    this.searchValue = input.value;
+  search(input: string): void {
+    this.searchValue = input;
     this.youtubeService.searchString.next(this.searchValue);
   }
 }

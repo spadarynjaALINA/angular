@@ -8,17 +8,17 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from '../../auth/services/auth.service';
-
+import { AuthService } from '../services/auth.service';
+import { ROUTH_PATHS } from '../../constants';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
   constructor(private _authService: AuthService, private router: Router) {}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+  canActivate(): boolean {
     if (this._authService.isAuth()) return true;
-    this.router.navigate(['/authorization']);
+    this.router.navigate([ROUTH_PATHS.AUTHORIZATION]);
     return false;
   }
 }
