@@ -15,7 +15,7 @@ export class YoutubeService {
 
   public sortBy = new BehaviorSubject<string>('');
 
-  public card: ISearchItem;
+  public card: ISearchItem | undefined;
 
   public id: string;
 
@@ -23,9 +23,8 @@ export class YoutubeService {
     return this.cardList;
   }
 
-  getCard(): ISearchItem {
-    this.id = location.pathname.slice(6);
-    this.card = this.cardList.items.filter((x) => x.id === this.id)[0];
+  getCard(id: string): ISearchItem | undefined {
+    this.card = this.cardList.items.find((x) => x.id === id);
     return this.card;
   }
 }

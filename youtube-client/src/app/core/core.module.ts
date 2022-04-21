@@ -9,14 +9,13 @@ import { PageErrorComponent } from './pages/page-error/page-error.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
-import { ProtectedDirective } from '../shared/directives/protected.directive';
+
 import { CreateCardComponent } from '../youtube/pages/create-card/create-card.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     CreateCardComponent,
-    ProtectedDirective,
     HeaderComponent,
     PageErrorComponent,
     SearchComponent,

@@ -1,4 +1,4 @@
-<div class="card-page-wap">
+<div class="card-page-wap" *ngIf="card">
   <button class="back-btn" (click)="goBack()"></button>
   <img [src]="card.snippet.thumbnails.maxres.url" alt="card picture">
   <div class="description-wrap">
