@@ -1,4 +1,4 @@
-<div class="card-list">
+<div class="card-list" *ngIf="cardList">
   <app-mat-card *ngFor="let card of cardList.items  | search:searchString | filter:filterString | sort:sortBy"
     [card]="card" [appColor]="card.snippet.publishedAt">
   </app-mat-card>

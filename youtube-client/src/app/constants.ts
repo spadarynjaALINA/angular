@@ -1,6 +1,6 @@
 export const ROUTH_PATHS = {
   AUTHORIZATION: 'authorization',
-  CARD: ':index',
+  CARD: ':id',
   HOME: 'video',
 };
 export const TOKEN = 'token';

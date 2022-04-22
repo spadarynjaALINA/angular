@@ -18,7 +18,7 @@ export class CardPageComponent implements OnInit {
   public card: ISearchItem | undefined;
 
   ngOnInit() {
-    const cardId = this.route.snapshot.params['index'];
+    const cardId = this.route.snapshot.params['id'];
     this.card = this.youtubeService.getCard(cardId);
   }
 

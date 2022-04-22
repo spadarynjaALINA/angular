@@ -15,16 +15,11 @@ export class YoutubeService {
 
   public sortBy = new BehaviorSubject<string>('');
 
-  public card: ISearchItem | undefined;
-
-  public id: string;
-
   getCardList(): ISearchResponse {
     return this.cardList;
   }
 
   getCard(id: string): ISearchItem | undefined {
-    this.card = this.cardList.items.find((x) => x.id === id);
-    return this.card;
+    return this.cardList.items.find((x) => x.id === id);
   }
 }

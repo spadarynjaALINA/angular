@@ -14,7 +14,7 @@ export class CardsListPageComponent implements OnInit {
 
   public sortBy = '';
 
-  public cardList: ISearchResponse;
+  public cardList: ISearchResponse | undefined;
 
   constructor(private youtubeService: YoutubeService) {}
 
