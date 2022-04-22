@@ -1,0 +1,11 @@
+<form class="login-wrap">
+  <h3>Login</h3>
+  <label for="nickame">login</label>
+  <input type="text" id="nickName" #nickName>
+  <label for="password">password</label>
+  <input type="password" id="password" #password autocomplete="on">
+  <div class="btn-wrap">
+    <button class="registration-btn">Registration</button>
+    <button class="enter-btn" (click)="userLogin()">Login</button>
+  </div>
+</form>

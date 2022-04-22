@@ -1,0 +1,19 @@
+<div class="card-page-wap" *ngIf="card">
+  <button class="back-btn" (click)="goBack()"></button>
+  <img [src]="card.snippet.thumbnails.maxres.url" alt="card picture">
+  <div class="description-wrap">
+    <div>
+      <div class="title-wrap">
+        <h3 class="title">{{card.snippet.title}}</h3>
+        <p class="published">{{card.snippet.publishedAt | date:"EEEE, MMMM d, y"}}</p>
+      </div>
+      <span>Description:</span>
+      <div class="description-inner-wrap">
+        <p class="description">{{card.snippet.description}}</p>
+      </div>
+    </div>
+
+    <app-card-statistic [card]="card.statistics"></app-card-statistic>
+    <span class="colored" [appColor]="card.snippet.publishedAt"></span>
+  </div>
+</div>
