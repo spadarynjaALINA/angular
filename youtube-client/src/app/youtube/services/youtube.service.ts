@@ -20,6 +20,6 @@ export class YoutubeService {
   }
 
   getCard(id: string): ISearchItem | undefined {
-    return this.cardList.items.find((x) => x.id === id);
+    return this.cardList.items.find((card) => card.id === id);
   }
 }
