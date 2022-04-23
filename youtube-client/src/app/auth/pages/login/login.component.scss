@@ -1,17 +1,16 @@
-$color: #2f80ed;
-$light-color: #5ea2ff;
+@import './../../../variables.scss';
 .login-wrap {
   box-sizing: border-box;
   width: 344px;
-  height: 248px;
+
   padding: 28px 20px 26px;
-  background: #f2f2f2;
+  background: $gray-color;
   display: flex;
   flex-direction: column;
   margin: calc(50vh - 328px) calc(50vw - 172px);
   border-radius: 5px;
   label {
-    color: #828282;
+    color: $dark-gray;
     font-size: 10px;
     margin-left: 6px;
   }
@@ -38,22 +37,22 @@ $light-color: #5ea2ff;
     font-weight: 400;
   }
   .enter-btn {
-    background: $color;
+    background: $blue-color;
     color: #fff;
     border-radius: 5px;
-    box-shadow: 2px 0px 4px 0px $color;
+    box-shadow: 2px 0px 4px 0px $blue-color;
     transition: 0.5s;
     &:hover {
-      box-shadow: 2px 0px 4px 0px $light-color;
-      background: $light-color;
+      box-shadow: 2px 0px 4px 0px $light-blue-color;
+      background: $light-blue-color;
     }
   }
   .registration-btn {
-    color: $color;
+    color: $blue-color;
     text-decoration: underline;
     transition: 0.5s;
     &:hover {
-      color: $light-color;
+      color: $light-blue-color;
       text-decoration: none;
     }
   }
@@ -62,4 +61,14 @@ $light-color: #5ea2ff;
     font-size: 18px;
     font-weight: 700;
   }
+}
+.err {
+  display: block;
+  height: 5px;
+  width: 101.4%;
+  background-color: $error;
+  border-radius: 0 0 5px 5px;
+}
+.text-error {
+  color: $error;
 }

@@ -2,6 +2,7 @@ export const ROUTH_PATHS = {
   AUTHORIZATION: 'authorization',
   CARD: ':id',
   HOME: 'video',
+  ADMIN:'new-video',
 };
 export const TOKEN = 'token';
 export const UP_DIRECTION_DATE = 'upDirDate';

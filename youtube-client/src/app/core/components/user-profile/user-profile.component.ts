@@ -8,6 +8,8 @@ import { ROUTH_PATHS } from 'src/app/constants';
 export class UserProfileComponent {
   public auth = ROUTH_PATHS.AUTHORIZATION;
 
+  public admin = ROUTH_PATHS.ADMIN;
+
   exit() {
     localStorage.clear();
   }

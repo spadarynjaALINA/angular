@@ -1,1 +1,19 @@
-<p>create-card works!</p>
+<form class="new-card-wrap" [formGroup]="newCard">
+  <h3>Create new card</h3>
+  <label for="title">Title</label>
+  <input type="text" id="title" #title formControlName="title">
+  <span *ngIf="!newCard.valid" class="err"></span>
+  <label for="description">Description</label>
+  <input type="text" id="description" #description formControlName="description">
+  <span *ngIf="!newCard.valid" class="err"></span>
+  <label for="img">Img</label>
+  <input type="text" id="img" #img formControlName="img">
+  <span *ngIf="!newCard.valid" class="err"></span>
+  <label for="link">Link video</label>
+  <input type="text" id="link" #link formControlName="link">
+  <span *ngIf="!newCard.valid" class="err"></span>
+  <div class="btn-wrap">
+
+    <button class="create-btn" (click)="createNewCard()">Create card</button>
+  </div>
+</form>

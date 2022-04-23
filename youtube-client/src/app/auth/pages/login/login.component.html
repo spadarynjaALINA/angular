@@ -1,11 +1,26 @@
-<form class="login-wrap">
+<form class="login-wrap" [formGroup]="login">
   <h3>Login</h3>
   <label for="nickame">login</label>
-  <input type="text" id="nickName" #nickName>
+  <input type="text" id="nickName" #nickName formControlName="name" autocomplete="off">
+  <span *ngIf="login.get('name')?.invalid && login.get('name')?.touched" class="err"></span>
+  <small class="text-error" *ngIf="login.get('name')?.errors?.['email'] && login.get('name')?.touched">Please enter a
+    valid email:
+    example@email.com</small>
+  <small class="text-error" *ngIf="login.get('name')?.errors?.['required'] && login.get('name')?.touched">Please enter a
+    login email</small>
   <label for="password">password</label>
-  <input type="password" id="password" #password autocomplete="on">
+  <input type="password" id="password" #password autocomplete="off" formControlName="password">
+  <span *ngIf="login.get('password')?.invalid && login.get('password')?.touched" class="err"></span>
+  <small class="text-error" *ngIf="login.get('password')?.errors?.['pattern'] && login.get('password')?.touched">Your
+    password must
+    be have at least 8 characters
+    long,1 uppercase, 1
+    lowercase character,
+    1 number, 1 special character, e.g., ! @ # ? ] </small>
+  <small class="text-error" *ngIf="login.get('password')?.errors?.['required'] && login.get('password')?.touched">Please
+    enter a password</small>
   <div class="btn-wrap">
-    <button class="registration-btn">Registration</button>
-    <button class="enter-btn" (click)="userLogin()">Login</button>
+    <button class="registration-btn" (click)="info()">Registration</button>
+    <button class="enter-btn" (click)="userLogin()" [disabled]="!login.valid">Login</button>
   </div>
 </form>
