@@ -35,6 +35,7 @@
     border: none;
     font-size: 12px;
     font-weight: 400;
+    cursor: pointer;
   }
   .enter-btn {
     background: $blue-color;
@@ -55,6 +56,14 @@
       color: $light-blue-color;
       text-decoration: none;
     }
+    button:disabled {
+      box-shadow: 2px 0px 4px 0px $disabled-blue;
+      background: $disabled-blue;
+      &:hover {
+        box-shadow: 2px 0px 4px 0px $disabled-blue;
+        background: $disabled-blue;
+      }
+    }
   }
 
   h3 {
@@ -62,7 +71,10 @@
     font-weight: 700;
   }
 }
-.err {
+.text-error {
+  color: $error;
+}
+.ng-invalid.ng-touched ~ .err {
   display: block;
   height: 5px;
   width: 101.4%;
@@ -70,5 +82,9 @@
   border-radius: 0 0 5px 5px;
 }
 .text-error {
+  display: none;
+}
+.ng-invalid.ng-touched ~ .text-error {
+  display: inline;
   color: $error;
 }
