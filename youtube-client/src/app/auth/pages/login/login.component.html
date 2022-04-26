@@ -1,11 +1,14 @@
-<form class="login-wrap">
+<form class="login-wrap" [formGroup]="login">
   <h3>Login</h3>
-  <label for="nickame">login</label>
-  <input type="text" id="nickName" #nickName>
-  <label for="password">password</label>
-  <input type="password" id="password" #password autocomplete="on">
+  <div *ngFor="let loginField of loginFields let i = index">
+    <label for="{{loginField.id}}">{{loginField.id }}</label>
+    <input id="{{loginField.id}}" formControlName="{{loginField.formControlName}}" autocomplete="off"
+      type="{{loginField.type}}">
+    <span class="err"></span>
+    <small class="text-error" *ngIf="!login.valid">{{createErrorMessage(loginField)}}</small>
+  </div>
   <div class="btn-wrap">
     <button class="registration-btn">Registration</button>
-    <button class="enter-btn" (click)="userLogin()">Login</button>
+    <button class="enter-btn" (click)="userLogin()" [disabled]="!login.valid">Login</button>
   </div>
 </form>

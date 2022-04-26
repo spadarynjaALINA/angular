@@ -1,1 +1,13 @@
-<p>create-card works!</p>
+<form class="new-card-wrap" [formGroup]="newCard">
+  <h3>Create new card</h3>
+  <div *ngFor="let field of fields">
+    <label for="{{field.id}}">{{field.id }}</label>
+    <input type="text" id="{{field.id}}" formControlName="{{field.formControlName}}" autocomplete="off">
+    <span class="err"></span>
+    <small *ngIf="!newCard.valid" class="text-error">{{createErrorMessage(field)}}</small>
+  </div>
+
+  <div class="btn-wrap">
+    <button class="create-btn" (click)="createNewCard()" [disabled]="!newCard.valid">Create card</button>
+  </div>
+</form>

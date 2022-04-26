@@ -1,0 +1,80 @@
+@import './../../../variables.scss';
+.new-card-wrap {
+  box-sizing: border-box;
+  width: 432px;
+
+  padding: 37px 25px 32px;
+  background: $gray-color;
+  display: flex;
+  flex-direction: column;
+  margin: calc(50vh - 328px) calc(50vw - 172px);
+  border-radius: 5px;
+  label {
+    color: $dark-gray;
+    font-size: 12px;
+    margin-left: 6px;
+    margin-top: 15px;
+  }
+  input {
+    height: 44px;
+    width: 382px;
+    border: none;
+    background: $input-bgc;
+    &:focus-visible {
+      outline: none;
+    }
+  }
+  .btn-wrap {
+    display: flex;
+    justify-content: flex-end;
+  }
+  button {
+    align-self: flex-end;
+    margin-top: 22px;
+    width: 188px;
+    height: 38px;
+    border: none;
+    font-size: 15px;
+    font-weight: 400;
+    cursor: pointer;
+  }
+  .create-btn {
+    background: $blue-color;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 2px 0px 4px 0px $blue-color;
+    transition: 0.5s;
+    &:hover {
+      box-shadow: 2px 0px 4px 0px $light-blue-color;
+      background: $light-blue-color;
+    }
+  }
+
+  h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #000;
+  }
+  button:disabled {
+    box-shadow: 2px 0px 4px 0px $disabled-blue;
+    background: $disabled-blue;
+    &:hover {
+      box-shadow: 2px 0px 4px 0px $disabled-blue;
+      background: $disabled-blue;
+    }
+  }
+}
+.ng-invalid.ng-touched ~ .err {
+  display: block;
+  height: 5px;
+  width: 101.4%;
+  background-color: $error;
+  border-radius: 0 0 5px 5px;
+}
+.text-error {
+  display: none;
+}
+.ng-invalid.ng-touched ~ .text-error {
+  display: inline;
+  color: $error;
+}

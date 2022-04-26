@@ -1,4 +1,10 @@
-<div class="auth-wrap" [routerLink]="auth">
-  <span class="user-name" (click)="exit()">Exit</span>
-  <img class="user-icon" src="./../../../../assets/svg/user-avatar.svg" alt="user's avatar" />
+<div class="auth-wrap">
+  <span class="user-name">User name</span>
+  <img class="user-icon" src="./../../../../assets/svg/user-avatar.svg" alt="user's avatar"
+    [matMenuTriggerFor]="menu" />
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item [routerLink]="auth">Login </button>
+    <button mat-menu-item (click)="exit()">Logout</button>
+    <button mat-menu-item [routerLink]="admin">Admin</button>
+  </mat-menu>
 </div>
