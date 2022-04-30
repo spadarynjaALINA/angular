@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+
 import { ISearchItem } from '../../models/search-item.model';
 
 import { YoutubeService } from '../../services/youtube.service';
@@ -15,14 +16,10 @@ export class CardsListPageComponent {
 
   public sortBy = '';
 
-  // public videos$: Observable<ISearchItem[] | undefined>;
-
-  // public videos$$ = new Subject<ISearchItem[] | undefined>();
-
   public cardList = new BehaviorSubject<ISearchItem[]>([]);
 
   constructor(public youtubeService: YoutubeService) {
-    this.youtubeService.videos$$.subscribe((val) => this.cardList.next(val));
+    this.youtubeService.videos$.subscribe((val) => this.cardList.next(val));
     this.youtubeService.searchString.subscribe((val) => (this.searchString = val));
     this.youtubeService.filterString.subscribe((val) => (this.filterString = val));
     this.youtubeService.sortBy.subscribe((val) => (this.sortBy = val));
@@ -31,6 +28,7 @@ export class CardsListPageComponent {
       this.youtubeService.videos$,
       this.youtubeService.videos$$,
       this.cardList,
+      'cardlist',
     );
   }
 }

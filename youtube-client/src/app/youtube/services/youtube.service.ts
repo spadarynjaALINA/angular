@@ -2,10 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import {
   BehaviorSubject,
-  catchError,
   debounceTime,
   distinctUntilChanged,
-  EMPTY,
   filter,
   fromEvent,
   map,
@@ -15,9 +13,10 @@ import {
 } from 'rxjs';
 import { injectToken, injectUrl } from 'src/app/constants';
 import { ISearchItem } from '../models/search-item.model';
-import { ISearchResponse, ISearchResponse2 } from '../models/search-response.model';
+import { ISearchResponse } from '../models/search-response.model';
 import * as cardList from '../pages/cards-list-page/card-list.json';
-import { ajax } from 'rxjs/ajax';
+import { YoutubeHttpService } from './youtube-http.service';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -26,6 +25,7 @@ export class YoutubeService {
     private httpClient: HttpClient,
     @Inject(injectUrl) private apiUrl: string,
     @Inject(injectToken) private apiToken: string,
+    public httpService: YoutubeHttpService,
   ) {
     this.videos$ = this.videos$$.asObservable();
   }
@@ -52,39 +52,16 @@ export class YoutubeService {
     return this.cardList.items.find((card) => card.id === id);
   }
 
-  createStream(input: Event) {
+  getYoutubeData(input: Event) {
     this.stream$ = fromEvent(input.target as HTMLInputElement, 'input').pipe(
       map((event) => (event.target as HTMLInputElement).value),
       debounceTime(500),
       distinctUntilChanged(),
       filter((value) => value.length > 2),
       switchMap((value) => {
-        return ajax
-          .getJSON<ISearchResponse2>(
-            `https://www.googleapis.com/youtube/v3/search?key=AIzaSyCKc7WgnuYKWhwJzgrhmq2qPF5Q7IScK-c&type=video&part=snippet&maxResults=15&q=${value}`,
-          )
-          .pipe(
-            catchError(() => EMPTY),
-            map((response) => response.items),
-          );
+        return this.httpService.createSearchRequest(value);
       }),
     );
-    this.stream$.subscribe((response) => {
-      this.videos$$.next(response as unknown as ISearchItem[]);
-      console.log(response, this.videos$$, '-response');
-    });
-    console.log(this.stream$);
-  }
-
-  getYoutubeData(value: string): string {
-    const queryParams = [
-      'part=snippet',
-      `q=${value}`,
-      'regionCode=ru',
-      'maxResults=20',
-      'type=video',
-      `key=${this.apiToken}`,
-    ];
-    return `${this.apiUrl}?${queryParams.join('&')}`;
+    this.stream$.subscribe((value) => this.videos$$.next(value));
   }
 }

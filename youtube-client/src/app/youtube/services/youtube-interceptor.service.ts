@@ -1,14 +1,14 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class YoutubeInterceptorService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const request = req.clone({ params: req.params.set('q', 'react') });
-    return next.handle(request);
+    const request = req.clone({ url: `${environment.API_URL}/${req.url}` });
+    console.log(request);
+    return next.handle(request).pipe(tap((event) => console.log(event, 'event')));
     // .catch((error) => {
     // return Observable.throw(error);
     // });
