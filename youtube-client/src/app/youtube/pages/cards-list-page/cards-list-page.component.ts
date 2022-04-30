@@ -1,27 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { ISearchItem } from '../../models/search-item.model';
 
-import { ISearchResponse } from '../../models/search-response.model';
 import { YoutubeService } from '../../services/youtube.service';
 @Component({
   selector: 'app-cards-list',
   templateUrl: './cards-list-page.component.html',
   styleUrls: ['./cards-list-page.component.scss'],
 })
-export class CardsListPageComponent implements OnInit {
+export class CardsListPageComponent {
   public searchString = '';
 
   public filterString = '';
 
   public sortBy = '';
 
-  public cardList: ISearchResponse | undefined;
+  // public videos$: Observable<ISearchItem[] | undefined>;
 
-  constructor(private youtubeService: YoutubeService) {}
+  // public videos$$ = new Subject<ISearchItem[] | undefined>();
 
-  ngOnInit() {
-    this.cardList = this.youtubeService.getCardList();
+  public cardList = new BehaviorSubject<ISearchItem[]>([]);
+
+  constructor(public youtubeService: YoutubeService) {
+    this.youtubeService.videos$$.subscribe((val) => this.cardList.next(val));
     this.youtubeService.searchString.subscribe((val) => (this.searchString = val));
     this.youtubeService.filterString.subscribe((val) => (this.filterString = val));
     this.youtubeService.sortBy.subscribe((val) => (this.sortBy = val));
+    console.log(
+      this.youtubeService.stream$,
+      this.youtubeService.videos$,
+      this.youtubeService.videos$$,
+      this.cardList,
+    );
   }
 }

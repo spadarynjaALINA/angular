@@ -13,6 +13,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { YoutubeRoutingModule } from './youtube-routing.module';
+import { YoutubeService } from './services/youtube.service';
+import { apiData } from '../constants';
 
 @NgModule({
   declarations: [
@@ -27,5 +29,6 @@ import { YoutubeRoutingModule } from './youtube-routing.module';
   ],
   imports: [YoutubeRoutingModule, MatButtonModule, MatCardModule, MatIconModule, CommonModule],
   exports: [RouterModule],
+  providers: [YoutubeService, apiData],
 })
 export class YoutubeModule {}

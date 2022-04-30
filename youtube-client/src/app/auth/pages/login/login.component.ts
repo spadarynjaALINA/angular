@@ -1,18 +1,21 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { TOKEN } from './../../../constants';
+import { IS_LOGIN } from './../../../constants';
 import { createToken } from 'src/app/shared/utils';
 import { FormBuilder, Validators } from '@angular/forms';
 import { regExValidator } from './../../validation';
 import { PASSWORD_REG_EX } from './../../../constants';
 import { ILoginForm } from '../../models/login.model';
+
+import { AuthService } from '../../services/auth.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  constructor(private router: Router, private fb: FormBuilder) {}
+  constructor(private router: Router, private fb: FormBuilder, public authService: AuthService) {}
 
   public loginFields: ILoginForm[] = [
     {
@@ -42,12 +45,10 @@ export class LoginComponent {
   });
 
   userLogin() {
-    localStorage.setItem(TOKEN, createToken());
-
+    localStorage.setItem(IS_LOGIN, createToken());
     this.router.navigate(['/']);
+    this.authService.login();
   }
-
-
 
   createErrorMessage(loginField: ILoginForm): string | undefined {
     let message: string | undefined;
@@ -65,6 +66,7 @@ export class LoginComponent {
       default:
         message = '';
     }
+
     return message;
   }
 }

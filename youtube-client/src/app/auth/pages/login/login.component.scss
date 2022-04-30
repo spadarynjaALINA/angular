@@ -47,6 +47,14 @@
       box-shadow: 2px 0px 4px 0px $light-blue-color;
       background: $light-blue-color;
     }
+    &:disabled {
+      box-shadow: 2px 0px 4px 0px $disabled-blue;
+      background: $disabled-blue;
+      &:hover {
+        box-shadow: 2px 0px 4px 0px $disabled-blue;
+        background: $disabled-blue;
+      }
+    }
   }
   .registration-btn {
     color: $blue-color;
@@ -55,14 +63,6 @@
     &:hover {
       color: $light-blue-color;
       text-decoration: none;
-    }
-    button:disabled {
-      box-shadow: 2px 0px 4px 0px $disabled-blue;
-      background: $disabled-blue;
-      &:hover {
-        box-shadow: 2px 0px 4px 0px $disabled-blue;
-        background: $disabled-blue;
-      }
     }
   }
 

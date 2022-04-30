@@ -10,3 +10,11 @@ export interface ISearchResponse {
   pageInfo: IPageInfo;
   items: ISearchItem[];
 }
+export interface ISearchResponse2 {
+  kind: string;
+  etag: string;
+  nextPageToken: string;
+  regionCode: string;
+  pageInfo: IPageInfo;
+  items: ISearchItem[];
+}

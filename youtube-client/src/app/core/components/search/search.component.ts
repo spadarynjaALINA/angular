@@ -11,8 +11,10 @@ export class SearchComponent {
 
   private searchValue = '';
 
-  search(input: string): void {
-    this.searchValue = input;
+  search(event: Event): void {
+    this.searchValue = (event.target as HTMLInputElement).value;
     this.youtubeService.searchString.next(this.searchValue);
+    this.youtubeService.inputValue = (event.target as HTMLInputElement).value;
+    this.youtubeService.createStream(event);
   }
 }

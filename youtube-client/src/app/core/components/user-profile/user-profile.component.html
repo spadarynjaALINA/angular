@@ -3,8 +3,9 @@
   <img class="user-icon" src="./../../../../assets/svg/user-avatar.svg" alt="user's avatar"
     [matMenuTriggerFor]="menu" />
   <mat-menu #menu="matMenu">
-    <button mat-menu-item [routerLink]="auth">Login </button>
-    <button mat-menu-item (click)="exit()">Logout</button>
     <button mat-menu-item [routerLink]="admin">Admin</button>
   </mat-menu>
+  <button *ngIf="authService.isLogin$ | async" (click)="exit()" [routerLink]="auth">exit</button>
+  <button *ngIf="authService.isExit$ | async" [routerLink]="auth">enter</button>
+
 </div>

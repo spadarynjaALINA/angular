@@ -1,7 +1,7 @@
 <mat-card class="card">
-  <div class="img-wrap"><img mat-card-image [src]="card.snippet.thumbnails.standard.url"></div>
+  <div class="img-wrap"><img mat-card-image [src]="card.snippet.thumbnails.default.url"></div>
   <mat-card-actions>
-    <app-card-statistic [card]="card.statistics"></app-card-statistic>
+    <!-- <app-card-statistic [card]="card.statistics"></app-card-statistic> -->
   </mat-card-actions>
   <mat-card-title [style.fontSize]="card.snippet.title.length < 60?'20px':'18px'">
     {{card.snippet.title}}</mat-card-title>

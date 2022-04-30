@@ -19,7 +19,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
 
-  { path: ROUTH_PATHS.ADMIN, component: CreateCardComponent },
+  { path: ROUTH_PATHS.ADMIN, component: CreateCardComponent, canActivate: [AuthGuard] },
   { path: '**', component: PageErrorComponent },
 ];
 
