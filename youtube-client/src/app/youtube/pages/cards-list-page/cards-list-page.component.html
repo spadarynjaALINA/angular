@@ -1,5 +1,5 @@
-<div class="card-list" *ngIf="cardList | async">
-  <app-mat-card *ngFor="let card of cardList | async" [card]="card" [appColor]="card.snippet.publishedAt">
+<div class="card-list" *ngIf="cardList ">
+  <app-mat-card *ngFor="let card of cardList | filter:filterString | sort:sortBy" [card]="card"
+    [appColor]="card.snippet.publishedAt">
   </app-mat-card>
 </div>
-<!-- | filter:filterString | sort:sortBy" -->

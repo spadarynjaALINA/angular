@@ -1,4 +1,6 @@
-import { Input, Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { AppStateService } from 'src/app/shared/app-state.service';
 import { ISearchItem } from 'src/app/youtube/models/search-item.model';
 @Component({
   selector: 'app-mat-card',
@@ -6,5 +8,11 @@ import { ISearchItem } from 'src/app/youtube/models/search-item.model';
   styleUrls: ['./mat-card.component.scss'],
 })
 export class MatCardComponent {
-  @Input() public card: ISearchItem;
+  public video = new BehaviorSubject<string>('');
+
+  @Input() card: ISearchItem;
+
+  constructor(public appStateService: AppStateService) {
+
+  }
 }

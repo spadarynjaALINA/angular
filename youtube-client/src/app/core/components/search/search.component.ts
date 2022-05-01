@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject, debounceTime, distinctUntilChanged, filter } from 'rxjs';
+import { AppStateService } from 'src/app/shared/app-state.service';
 import { YoutubeService } from '../../../youtube/services/youtube.service';
 
 @Component({
@@ -6,15 +8,18 @@ import { YoutubeService } from '../../../youtube/services/youtube.service';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
-export class SearchComponent {
-  constructor(public youtubeService: YoutubeService) {}
+export class SearchComponent implements OnInit {
+  constructor(public youtubeService: YoutubeService, public appStateService: AppStateService) {}
 
-  private searchValue = '';
+  public searchString = new BehaviorSubject<string>('');
 
-  search(event: Event): void {
-    this.searchValue = (event.target as HTMLInputElement).value;
-    this.youtubeService.searchString.next(this.searchValue);
-    this.youtubeService.inputValue = (event.target as HTMLInputElement).value;
-    this.youtubeService.getYoutubeData(event);
+  ngOnInit() {
+    this.searchString
+      .pipe(
+        debounceTime(500),
+        distinctUntilChanged(),
+        filter((value) => value.length > 2),
+      )
+      .subscribe((value) => this.appStateService.getCardList(value));
   }
 }

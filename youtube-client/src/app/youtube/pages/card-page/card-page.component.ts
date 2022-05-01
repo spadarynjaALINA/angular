@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ISearchItem } from 'src/app/youtube/models/search-item.model';
+
 import { Location } from '@angular/common';
-import { YoutubeService } from '../../services/youtube.service';
+
 import { ActivatedRoute } from '@angular/router';
+import { AppStateService } from 'src/app/shared/app-state.service';
+import { ISearchItem } from '../../models/search-item.model';
 @Component({
   selector: 'app-card-page',
   templateUrl: './card-page.component.html',
@@ -11,15 +13,15 @@ import { ActivatedRoute } from '@angular/router';
 export class CardPageComponent implements OnInit {
   constructor(
     public location: Location,
-    private youtubeService: YoutubeService,
+    private appStateService: AppStateService,
     private route: ActivatedRoute,
   ) {}
 
-  public card: ISearchItem | undefined;
+  public card: ISearchItem;
 
   ngOnInit() {
-    const cardId = this.route.snapshot.params['id'];
-    this.card = this.youtubeService.getCard(cardId);
+    this.appStateService.fetchCard(this.route.snapshot.params['id']);
+    this.appStateService.card$.subscribe((val) => (this.card = val));
   }
 
   goBack(): void {

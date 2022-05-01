@@ -14,6 +14,11 @@ interface ILocalized {
   title: string;
   description: string;
 }
+
+export interface Iid {
+  kind: string;
+  videoId: string;
+}
 interface ISnippet {
   publishedAt: string;
   channelId: string;
@@ -40,4 +45,11 @@ export interface ISearchItem {
   id: string;
   snippet: ISnippet;
   statistics: IStatistics;
+}
+
+export interface Ivideo {
+  kind: string;
+  etag: string;
+  id: Iid;
+  snippet: ISnippet;
 }

@@ -1,8 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, EMPTY, map, Observable, tap } from 'rxjs';
+import { catchError, EMPTY, map, Observable } from 'rxjs';
 import { ISearchItem } from '../models/search-item.model';
-import { ISearchResponse2 } from '../models/search-response.model';
+
+import { ISearchResponse, ISearchResponse2 } from '../models/search-response.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,23 +17,39 @@ export class YoutubeHttpService {
 
   private MAX_RESULTS = '15';
 
-  private PATH = 'snippets';
+  private PATH = 'snippet';
+
+  private PATH_FOR_STAT = 'snippet,statistics';
 
   private TYPE = 'video';
 
   private KEY = 'AIzaSyCKc7WgnuYKWhwJzgrhmq2qPF5Q7IScK-c';
 
-  createSearchRequest(query: string): Observable<ISearchItem[]> {
-    console.log('request');
+  createSearchRequestIds(query: string): Observable<string[]> {
+    console.log('YoutubeHttpService');
     const params = new HttpParams()
       .set('maxResults', this.MAX_RESULTS)
-      .set('q', query)
+      .set('q', query || '')
       .set('type', this.TYPE)
-      .set('key', this.KEY);
+      .set('key', this.KEY)
+      .set('part', this.PATH);
     return this.http.get<ISearchResponse2>(this.SEARCH_URL, { params }).pipe(
       catchError(() => EMPTY),
+      map((response) => response.items.map((items) => items.id.videoId)),
+    );
+  }
+
+  createSearchRequestCards(ids: string[]): Observable<ISearchItem[]> {
+    const IDS = ids.join(',');
+
+    const params = new HttpParams()
+      .set('key', this.KEY)
+      .set('part', this.PATH_FOR_STAT)
+      .set('id', IDS);
+    console.log(IDS, params);
+    return this.http.get<ISearchResponse>(this.VIDEOS_URL, { params }).pipe(
+      catchError(() => EMPTY),
       map((response) => response.items),
-      tap((response: any) => console.log(response)),
     );
   }
 }

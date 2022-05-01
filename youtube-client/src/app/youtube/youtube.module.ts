@@ -15,6 +15,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { YoutubeRoutingModule } from './youtube-routing.module';
 import { YoutubeService } from './services/youtube.service';
 import { apiData } from '../constants';
+import { YoutubeHttpService } from './services/youtube-http.service';
+import { TitleLengthPipe } from './pipes/title-length.pipe';
 
 @NgModule({
   declarations: [
@@ -25,10 +27,11 @@ import { apiData } from '../constants';
     SearchPipe,
     FilterPipe,
     SortPipe,
+    TitleLengthPipe,
     CardPageComponent,
   ],
   imports: [YoutubeRoutingModule, MatButtonModule, MatCardModule, MatIconModule, CommonModule],
   exports: [RouterModule],
-  providers: [YoutubeService, apiData],
+  providers: [YoutubeService, apiData, YoutubeHttpService],
 })
 export class YoutubeModule {}

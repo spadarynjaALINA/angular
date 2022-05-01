@@ -1,3 +1,5 @@
+@import './../../../variables.scss';
+
 :root {
   display: flex;
   justify-content: flex-end;
@@ -22,4 +24,20 @@
   cursor: pointer;
   font-size: 12px;
   color: #4f4f4f;
+}
+button {
+  margin-left: -3px;
+  width: 40px;
+  height: 24px;
+  background: $blue-color;
+  border: none;
+  border-radius: 0 4px 4px 0;
+
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.5s;
+  &:hover {
+    background: $light-blue-color;
+  }
 }

@@ -10,6 +10,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { apiData } from './constants';
 import { YoutubeInterceptorService } from './youtube/services/youtube-interceptor.service';
+import { SharedModule } from './shared/shared.module';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +20,7 @@ import { YoutubeInterceptorService } from './youtube/services/youtube-intercepto
     AppRoutingModule,
     RouterModule,
     CoreModule,
+    SharedModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,

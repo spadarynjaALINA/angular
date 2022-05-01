@@ -50,7 +50,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  flex-basis: 75%;
+  flex-basis: 70%;
 }
 .logo {
   width: $logo-size;
@@ -61,7 +61,6 @@ header {
   background-position: center center;
   background: none;
   border: none;
-  // background-image: url('./../../../../assets/svg/logo.svg');
   cursor: pointer;
   transition: 0.5s;
 }
@@ -72,6 +71,6 @@ header {
 }
 app-user-profile {
   display: flex;
-  flex-basis: 25%;
+  flex-basis: 30%;
   justify-content: flex-end;
 }

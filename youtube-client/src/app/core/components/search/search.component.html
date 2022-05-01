@@ -1,4 +1,5 @@
 <div class="searchButtonHandler">
-  <input #searchInput type="text" placeholder="What are you want to find out?" (keyup)="search($event)">
-  <button>search</button>
+  <input #searchInput type="text" placeholder="What are you want to find out?"
+    (keyup)="searchString.next(searchInput.value)">
+
 </div>

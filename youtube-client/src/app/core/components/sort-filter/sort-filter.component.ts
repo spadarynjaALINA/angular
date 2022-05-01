@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { YoutubeService } from '../../../youtube/services/youtube.service';
+import { AppStateService } from 'src/app/shared/app-state.service';
+
 import {
   UP_DIRECTION_DATE,
   DOWN_DIRECTION_DATE,
@@ -12,7 +13,7 @@ import {
   styleUrls: ['./sort-filter.component.scss'],
 })
 export class SortFilterComponent {
-  constructor(public youtubeService: YoutubeService) {}
+  constructor(public appStateService: AppStateService) {}
 
   public toggleSortBtn: undefined | boolean = undefined;
 
@@ -22,7 +23,7 @@ export class SortFilterComponent {
 
   inputFilterChange(event: Event): void {
     this.filterValue = (event.target as HTMLInputElement).value;
-    this.youtubeService.filterString.next(this.filterValue);
+    this.appStateService.filterString.next(this.filterValue);
   }
 
   toggleSort(event: Event): void {
@@ -45,6 +46,6 @@ export class SortFilterComponent {
     ) {
       this.sortByType = DOWN_DIRECTION_VIEWS;
     }
-    this.youtubeService.sortBy.next(this.sortByType);
+    this.appStateService.sortBy.next(this.sortByType);
   }
 }
