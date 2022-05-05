@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { AppStateService } from 'src/app/shared/app-state.service';
 import { ISearchItem } from '../../models/search-item.model';
 import { YoutubeService } from '../../services/youtube.service';
@@ -7,18 +8,32 @@ import { YoutubeService } from '../../services/youtube.service';
   templateUrl: './cards-list-page.component.html',
   styleUrls: ['./cards-list-page.component.scss'],
 })
-export class CardsListPageComponent {
+export class CardsListPageComponent implements OnInit, OnDestroy {
   public filterString = '';
 
   public sortBy = '';
 
   public cardList: ISearchItem[] | [] = [];
 
-  constructor(public youtubeService: YoutubeService, public appStateService: AppStateService) {
-    this.appStateService.filterString$.subscribe((query) => (this.filterString = query));
-    this.appStateService.sortBy$.subscribe((query) => (this.sortBy = query));
-    this.appStateService.cardList$.subscribe((videos) => {
-      this.cardList = videos;
-    });
+  private subscriptions = new Subscription();
+
+  constructor(public youtubeService: YoutubeService, public appStateService: AppStateService) {}
+
+  ngOnInit(): void {
+    this.subscriptions.add(
+      this.appStateService.filterString$.subscribe((query) => (this.filterString = query)),
+    );
+    this.subscriptions.add(
+      this.appStateService.sortBy$.subscribe((query) => (this.sortBy = query)),
+    );
+    this.subscriptions.add(
+      this.appStateService.cardList$.subscribe((videos) => {
+        this.cardList = videos;
+      }),
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 }
