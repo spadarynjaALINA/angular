@@ -1,25 +1,18 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ISearchItem } from '../models/search-item.model';
-import { ISearchResponse } from '../models/search-response.model';
-import * as cardList from '../pages/cards-list-page/card-list.json';
+import { YoutubeHttpService } from './youtube-http.service';
 @Injectable({
   providedIn: 'root',
 })
 export class YoutubeService {
-  public cardList: ISearchResponse = cardList;
+  constructor(public httpService: YoutubeHttpService) {}
 
-  public searchString = new BehaviorSubject<string>('');
-
-  public filterString = new BehaviorSubject<string>('');
-
-  public sortBy = new BehaviorSubject<string>('');
-
-  getCardList(): ISearchResponse {
-    return this.cardList;
+  getVideoById(ids: string[]): Observable<ISearchItem[]> {
+    return this.httpService.createSearchRequestCards(ids);
   }
 
-  getCard(id: string): ISearchItem | undefined {
-    return this.cardList.items.find((card) => card.id === id);
+  getVideoIds(query: string): Observable<string[]> {
+    return this.httpService.createSearchRequestIds(query);
   }
 }

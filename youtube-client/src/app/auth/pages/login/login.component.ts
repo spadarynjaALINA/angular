@@ -1,18 +1,19 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { TOKEN } from './../../../constants';
-import { createToken } from 'src/app/shared/utils';
 import { FormBuilder, Validators } from '@angular/forms';
-import { regExValidator } from './../../validation';
-import { PASSWORD_REG_EX } from './../../../constants';
+import { regExValidator } from 'src/app/auth/validation';
+import { PASSWORD_REG_EX } from 'src/app/constants';
 import { ILoginForm } from '../../models/login.model';
+
+import { AuthService } from '../../services/auth.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  constructor(private router: Router, private fb: FormBuilder) {}
+  constructor(private router: Router, private fb: FormBuilder, public authService: AuthService) {}
 
   public loginFields: ILoginForm[] = [
     {
@@ -41,14 +42,6 @@ export class LoginComponent {
     password: [null, [Validators.required, regExValidator(PASSWORD_REG_EX)]],
   });
 
-  userLogin() {
-    localStorage.setItem(TOKEN, createToken());
-
-    this.router.navigate(['/']);
-  }
-
-
-
   createErrorMessage(loginField: ILoginForm): string | undefined {
     let message: string | undefined;
     switch (true) {
@@ -65,6 +58,7 @@ export class LoginComponent {
       default:
         message = '';
     }
+
     return message;
   }
 }

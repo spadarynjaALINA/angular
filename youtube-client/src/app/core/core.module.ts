@@ -13,6 +13,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateCardComponent } from '../youtube/pages/create-card/create-card.component';
 import { RouterModule } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
+import { AppStateService } from '../shared/app-state.service';
+import { DataService } from '../shared/data.service';
 @NgModule({
   declarations: [
     CreateCardComponent,
@@ -34,5 +36,6 @@ import { MatMenuModule } from '@angular/material/menu';
     ReactiveFormsModule,
   ],
   exports: [HeaderComponent],
+  providers: [AppStateService, DataService],
 })
 export class CoreModule {}

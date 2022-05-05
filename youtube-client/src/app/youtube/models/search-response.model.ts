@@ -1,4 +1,4 @@
-import { ISearchItem } from './search-item.model';
+import { ISearchItem, Ivideo } from './search-item.model';
 
 interface IPageInfo {
   totalResults: number;
@@ -9,4 +9,12 @@ export interface ISearchResponse {
   etag: string;
   pageInfo: IPageInfo;
   items: ISearchItem[];
+}
+export interface ISearchResponse2 {
+  kind: string;
+  etag: string;
+  nextPageToken: string;
+  regionCode: string;
+  pageInfo: IPageInfo;
+  items: Ivideo[];
 }

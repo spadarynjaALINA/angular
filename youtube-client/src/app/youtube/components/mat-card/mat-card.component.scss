@@ -60,23 +60,7 @@ app-card-statistic {
   display: flex;
   margin: 0;
 }
-// mat-icon {
-//   font-size: $icon-height;
-//   height: $icon-height;
-//   width: auto;
-// }
-// .mat-icon-button .mat-icon {
-//   line-height: $icon-height;
-// }
-// .mat-icon-button {
-//   width: $icon-height;
-//   height: $icon-height;
-//   flex-shrink: 0;
-//   line-height: $icon-height;
-//   span {
-//     font-size: 10px;
-//   }
-// }
+
 .more {
   background: #2f80ed;
   border-radius: 5px;
@@ -87,6 +71,7 @@ app-card-statistic {
   margin-left: calc(50% - 66px);
   margin-bottom: 15px;
   transition: 0.5s;
+  cursor: pointer;
   &:hover {
     background: #5ea2ff;
   }
