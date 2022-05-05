@@ -7,16 +7,9 @@ import { ROUTH_PATHS } from 'src/app/constants';
   styleUrls: ['./user-profile.component.scss'],
 })
 export class UserProfileComponent {
-  constructor(public authService: AuthService) {
-    console.log(this.authService.isExit$, this.authService.isLogin$);
-  }
+  constructor(public authService: AuthService) {}
 
   public auth = ROUTH_PATHS.AUTHORIZATION;
 
   public admin = ROUTH_PATHS.ADMIN;
-
-  exit() {
-    localStorage.clear();
-    this.authService.exit();
-  }
 }

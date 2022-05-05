@@ -5,7 +5,7 @@
   <mat-menu #menu="matMenu">
     <button mat-menu-item [routerLink]="admin">Admin</button>
   </mat-menu>
-  <button *ngIf="authService.isLogin$ | async" (click)="exit()" [routerLink]="auth">exit</button>
-  <button *ngIf="authService.isExit$ | async" [routerLink]="auth">enter</button>
-
+  <button *ngIf="(authService.isLogin$ | async)===true; else Logout" (click)="authService.logout()"
+    [routerLink]="auth">exit</button>
+  <ng-template #Logout> <button [routerLink]="auth">enter</button></ng-template>
 </div>

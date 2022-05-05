@@ -23,7 +23,7 @@ export class SortFilterComponent {
 
   inputFilterChange(event: Event): void {
     this.filterValue = (event.target as HTMLInputElement).value;
-    this.appStateService.filterString.next(this.filterValue);
+    this.appStateService.filterString$.next(this.filterValue);
   }
 
   toggleSort(event: Event): void {
@@ -46,6 +46,6 @@ export class SortFilterComponent {
     ) {
       this.sortByType = DOWN_DIRECTION_VIEWS;
     }
-    this.appStateService.sortBy.next(this.sortByType);
+    this.appStateService.sortBy$.next(this.sortByType);
   }
 }

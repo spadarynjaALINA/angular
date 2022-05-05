@@ -14,14 +14,13 @@ import { ROUTH_PATHS } from '../../constants';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
+  private isAuth: boolean;
 
-  canActivate(): boolean {
-    let isAuth = false;
-    this.authService.isLogin$.subscribe((val) => (isAuth = val));
-    if (isAuth) return true;
-    console.log(this.authService.isLogin$);
-    this.router.navigate([ROUTH_PATHS.AUTHORIZATION]);
-    return false;
+  constructor(private authService: AuthService, private router: Router) {
+    this.authService.isLogin$.subscribe((val) => (this.isAuth = val));
+  }
+
+  canActivate(): boolean | Promise<boolean> {
+    return this.isAuth ? true : this.router.navigate([ROUTH_PATHS.AUTHORIZATION]);
   }
 }

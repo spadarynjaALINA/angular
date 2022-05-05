@@ -8,9 +8,9 @@ import { DataService } from './data.service';
   providedIn: 'root',
 })
 export class AppStateService {
-  public filterString = new BehaviorSubject<string>('');
+  public filterString$ = new BehaviorSubject<string>('');
 
-  public sortBy = new BehaviorSubject<string>('');
+  public sortBy$ = new BehaviorSubject<string>('');
 
   public cardList$ = new BehaviorSubject<ISearchItem[]>([]);
 
@@ -19,7 +19,6 @@ export class AppStateService {
   constructor(public dataService: DataService, private router: Router) {}
 
   fetchCardList(query: string): void {
-    console.log('fetch');
     this.dataService.searchVideo(query).subscribe((data) => {
       this.cardList$.next(data);
     });

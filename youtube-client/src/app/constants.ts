@@ -1,35 +1,24 @@
-import { InjectionToken } from '@angular/core';
-
 export const ROUTH_PATHS = {
   AUTHORIZATION: 'authorization',
   CARD: ':id',
   HOME: 'video',
   ADMIN: 'new-video',
 };
-export const URL_SEARCH = 'https://www.googleapis.com/youtube/v3/search?';
-export const URL_STATISTICS = 'https://www.googleapis.com/youtube/v3/videos';
-export const IS_LOGIN = 'isLogin';
-export const TOKEN = 'AIzaSyCKc7WgnuYKWhwJzgrhmq2qPF5Q7IScK - c';
+
+export const API = {
+  SEARCH_URL: 'search',
+  VIDEOS_URL: 'videos',
+  IS_LOGIN: 'isLogin',
+  PATH: 'snippet',
+  PATH_FOR_STAT: 'snippet,statistics',
+  TYPE: 'video',
+  MAX_RESULTS: '16',
+  KEY: 'AIzaSyCKc7WgnuYKWhwJzgrhmq2qPF5Q7IScK - c',
+};
+
 export const UP_DIRECTION_DATE = 'upDirDate';
-export const injectUrl = new InjectionToken('URL');
-
-export const injectToken = new InjectionToken('api');
-
-export const apiData = [
-  {
-    provide: injectUrl,
-    useValue: URL_SEARCH,
-  },
-  {
-    provide: injectToken,
-    useValue: TOKEN,
-  },
-];
-
 export const DOWN_DIRECTION_DATE = 'downDirDate';
-
 export const UP_DIRECTION_VIEWS = 'upDirViews';
-
 export const DOWN_DIRECTION_VIEWS = 'downDirViews';
 
 export const URL_REG_EX =

@@ -14,7 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { YoutubeRoutingModule } from './youtube-routing.module';
 import { YoutubeService } from './services/youtube.service';
-import { apiData } from '../constants';
+
 import { YoutubeHttpService } from './services/youtube-http.service';
 import { TitleLengthPipe } from './pipes/title-length.pipe';
 
@@ -32,6 +32,6 @@ import { TitleLengthPipe } from './pipes/title-length.pipe';
   ],
   imports: [YoutubeRoutingModule, MatButtonModule, MatCardModule, MatIconModule, CommonModule],
   exports: [RouterModule],
-  providers: [YoutubeService, apiData, YoutubeHttpService],
+  providers: [YoutubeService, YoutubeHttpService],
 })
 export class YoutubeModule {}

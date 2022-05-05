@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 export class YoutubeInterceptorService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const request = req.clone({ url: `${environment.API_URL}/${req.url}` });
+    console.log(request);
     return next.handle(request);
   }
 }

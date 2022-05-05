@@ -41,3 +41,8 @@ button {
     background: $light-blue-color;
   }
 }
+button.mat-menu-item {
+  background: none;
+  color: #4f4f4f;
+  height: 48px;
+}

@@ -8,10 +8,9 @@ import { AuthGuard } from './auth/guards/auth.guard';
 import { CoreModule } from './core/core.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { apiData } from './constants';
+
 import { YoutubeInterceptorService } from './youtube/services/youtube-interceptor.service';
 import { SharedModule } from './shared/shared.module';
-
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +27,7 @@ import { SharedModule } from './shared/shared.module';
   exports: [],
   providers: [
     AuthGuard,
-    apiData,
+
     { provide: HTTP_INTERCEPTORS, useClass: YoutubeInterceptorService, multi: true },
   ],
   bootstrap: [AppComponent],

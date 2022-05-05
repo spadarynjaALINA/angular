@@ -1,31 +1,25 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
+import { API } from 'src/app/constants';
+import { createToken } from 'src/app/shared/utils';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  public isLogin$: Observable<boolean>;
+  public isLogin$ = new BehaviorSubject(!!localStorage.getItem('isLogin'));
 
-  private isLogin$$ = new BehaviorSubject(!!localStorage.getItem('isLogin'));
+  constructor(public router: Router) {}
 
-  public isExit$: Observable<boolean>;
-
-  private isExit$$ = new BehaviorSubject(!localStorage.getItem('isLogin'));
-
-  constructor() {
-    this.isLogin$ = this.isLogin$$.asObservable();
-
-    this.isExit$ = this.isExit$$.asObservable();
+  public login(): void {
+    localStorage.setItem(API.IS_LOGIN, createToken());
+    this.router.navigate(['/']);
+    this.isLogin$.next(true);
   }
 
-  public login() {
-    this.isLogin$$.next(true);
-    this.isExit$$.next(false);
-  }
-
-  public exit() {
-    this.isLogin$$.next(false);
-    this.isExit$$.next(true);
+  public logout(): void {
+    localStorage.clear();
+    this.isLogin$.next(false);
   }
 }

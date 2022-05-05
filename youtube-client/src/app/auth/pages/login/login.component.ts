@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { IS_LOGIN } from './../../../constants';
-import { createToken } from 'src/app/shared/utils';
 import { FormBuilder, Validators } from '@angular/forms';
-import { regExValidator } from './../../validation';
-import { PASSWORD_REG_EX } from './../../../constants';
+import { regExValidator } from 'src/app/auth/validation';
+import { PASSWORD_REG_EX } from 'src/app/constants';
 import { ILoginForm } from '../../models/login.model';
 
 import { AuthService } from '../../services/auth.service';
@@ -43,12 +41,6 @@ export class LoginComponent {
     name: [null, [Validators.required, Validators.email]],
     password: [null, [Validators.required, regExValidator(PASSWORD_REG_EX)]],
   });
-
-  userLogin() {
-    localStorage.setItem(IS_LOGIN, createToken());
-    this.router.navigate(['/']);
-    this.authService.login();
-  }
 
   createErrorMessage(loginField: ILoginForm): string | undefined {
     let message: string | undefined;

@@ -15,8 +15,8 @@ export class CardsListPageComponent {
   public cardList: ISearchItem[] | [] = [];
 
   constructor(public youtubeService: YoutubeService, public appStateService: AppStateService) {
-    this.appStateService.filterString.subscribe((val) => (this.filterString = val));
-    this.appStateService.sortBy.subscribe((val) => (this.sortBy = val));
+    this.appStateService.filterString$.subscribe((query) => (this.filterString = query));
+    this.appStateService.sortBy$.subscribe((query) => (this.sortBy = query));
     this.appStateService.cardList$.subscribe((videos) => {
       this.cardList = videos;
     });
