@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Location } from '@angular/common';
 
@@ -11,7 +11,7 @@ import { ISearchItem } from '../../models/search-item.model';
   templateUrl: './card-page.component.html',
   styleUrls: ['./card-page.component.scss'],
 })
-export class CardPageComponent implements OnInit, OnDestroy {
+export class CardPageComponent implements OnInit {
   constructor(
     public location: Location,
     private appStateService: AppStateService,
@@ -23,9 +23,5 @@ export class CardPageComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.appStateService.fetchCard(this.route.snapshot.params['id']);
     this.appStateService.card$.subscribe((val) => (this.card = val));
-  }
-
-  ngOnDestroy() {
-    this.appStateService.card$.unsubscribe();
   }
 }

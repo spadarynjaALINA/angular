@@ -8,14 +8,14 @@ export const ROUTH_PATHS = {
 export const API = {
   SEARCH_URL: 'search',
   VIDEOS_URL: 'videos',
-  IS_LOGIN: 'isLogin',
+
   PATH: 'snippet',
   PATH_FOR_STAT: 'snippet,statistics',
   TYPE: 'video',
   MAX_RESULTS: '16',
   KEY: 'AIzaSyCKc7WgnuYKWhwJzgrhmq2qPF5Q7IScK - c',
 };
-
+export const IS_LOGIN = 'isLogin';
 export const UP_DIRECTION_DATE = 'upDirDate';
 export const DOWN_DIRECTION_DATE = 'downDirDate';
 export const UP_DIRECTION_VIEWS = 'upDirViews';

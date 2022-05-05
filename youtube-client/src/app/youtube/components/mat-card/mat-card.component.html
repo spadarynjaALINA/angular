@@ -7,7 +7,7 @@
   <mat-card-title [style.fontSize]="card.snippet.title.length < 60?'20px':'18px' ">{{card.snippet.title |
     titleLength:card.snippet.title.length}}</mat-card-title>
   <mat-card-footer>
-    <button class="more" [routerLink]="card.id" (click)="appStateService.card$.next(card)">more...</button>
+    <button class="more" [routerLink]="card.id">more...</button>
     <span class="time-decor " [appColor]="card.snippet.publishedAt"></span>
   </mat-card-footer>
 </mat-card>
