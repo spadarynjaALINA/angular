@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ISearchItem } from '../models/search-item.model';
+import { IVideoTransformed } from '../models/search-item.model';
 import { YoutubeHttpService } from './youtube-http.service';
 @Injectable({
   providedIn: 'root',
@@ -8,7 +8,7 @@ import { YoutubeHttpService } from './youtube-http.service';
 export class YoutubeService {
   constructor(public httpService: YoutubeHttpService) {}
 
-  getVideoById(ids: string[]): Observable<ISearchItem[]> {
+  getVideoById(ids: string[]): Observable<IVideoTransformed[]> {
     return this.httpService.createSearchRequestCards(ids);
   }
 

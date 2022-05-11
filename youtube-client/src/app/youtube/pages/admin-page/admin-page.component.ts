@@ -2,15 +2,15 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { regExValidator } from 'src/app/auth/validation';
 import { IAdminForm } from '../../models/form.model';
-import { URL_REG_EX } from './../../../constants';
-import { DATE_REG_EX } from './../../../constants';
+import { URL_REG_EX } from '../../../constants';
+import { DATE_REG_EX } from '../../../constants';
 
 @Component({
-  selector: 'app-create-card',
-  templateUrl: './create-card.component.html',
-  styleUrls: ['./create-card.component.scss'],
+  selector: 'admin-page',
+  templateUrl: './admin-page.component.html',
+  styleUrls: ['./admin-page.scss'],
 })
-export class CreateCardComponent {
+export class AdminPageComponent {
   constructor(public fb: FormBuilder) {}
 
   public fields: IAdminForm[] = [
@@ -64,8 +64,7 @@ export class CreateCardComponent {
     date: ['', [Validators.required, regExValidator(DATE_REG_EX)]],
   });
 
-  createNewCard() {
-  }
+  createNewCard() {}
 
   createErrorMessage(field: IAdminForm): string | undefined {
     let message: string | undefined;

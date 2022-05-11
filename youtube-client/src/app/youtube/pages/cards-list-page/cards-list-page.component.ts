@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import { AppState } from 'src/app/redux/state.models';
 import { AppStateService } from 'src/app/shared/app-state.service';
-import { ISearchItem } from '../../models/search-item.model';
+import { IVideoTransformed } from '../../models/search-item.model';
 import { YoutubeService } from '../../services/youtube.service';
 @Component({
   selector: 'app-cards-list',
@@ -13,11 +15,17 @@ export class CardsListPageComponent implements OnInit, OnDestroy {
 
   public sortBy = '';
 
-  public cardList: ISearchItem[] | [] = [];
+  public cardList: IVideoTransformed[] | [] = [];
 
   private subscriptions = new Subscription();
 
-  constructor(public youtubeService: YoutubeService, public appStateService: AppStateService) {}
+  constructor(
+    private store: Store<AppState>,
+    public youtubeService: YoutubeService,
+    public appStateService: AppStateService,
+  ) {
+    console.log(this.store);
+  }
 
   ngOnInit(): void {
     this.subscriptions.add(

@@ -17,6 +17,12 @@ import { YoutubeService } from './services/youtube.service';
 
 import { YoutubeHttpService } from './services/youtube-http.service';
 import { TitleLengthPipe } from './pipes/title-length.pipe';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { youtubeReducer } from '../redux/reducers/youtubeReducer';
+import { EffectsModule } from '@ngrx/effects';
+import { YoutubeEffects } from '../redux/effects/youtubeEffects.service';
 
 @NgModule({
   declarations: [
@@ -27,10 +33,22 @@ import { TitleLengthPipe } from './pipes/title-length.pipe';
     SearchPipe,
     FilterPipe,
     SortPipe,
+
     TitleLengthPipe,
     CardPageComponent,
+    AdminPageComponent,
   ],
-  imports: [YoutubeRoutingModule, MatButtonModule, MatCardModule, MatIconModule, CommonModule],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    YoutubeRoutingModule,
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    CommonModule,
+    StoreModule.forFeature('youtubeState', youtubeReducer),
+    EffectsModule.forFeature([YoutubeEffects]),
+  ],
   exports: [RouterModule],
   providers: [YoutubeService, YoutubeHttpService],
 })

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { ISearchItem } from '../youtube/models/search-item.model';
+import { IVideoTransformed } from '../youtube/models/search-item.model';
 import { DataService } from './data.service';
 
 @Injectable({
@@ -12,9 +12,9 @@ export class AppStateService {
 
   public sortBy$ = new BehaviorSubject<string>('');
 
-  public cardList$ = new BehaviorSubject<ISearchItem[]>([]);
+  public cardList$ = new BehaviorSubject<IVideoTransformed[]>([]);
 
-  public card$ = new Subject<ISearchItem>();
+  public card$ = new Subject<IVideoTransformed>();
 
   constructor(public dataService: DataService, private router: Router) {}
 

@@ -5,7 +5,7 @@ import { PageErrorComponent } from './core/pages/page-error/page-error.component
 import { YoutubeModule } from './youtube/youtube.module';
 import { AuthModule } from './auth/auth.module';
 import { ROUTH_PATHS } from './constants';
-import { CreateCardComponent } from './youtube/pages/create-card/create-card.component';
+import { AdminPageComponent } from './youtube/pages/admin-page/admin-page.component';
 const routes: Routes = [
   {
     path: ROUTH_PATHS.AUTHORIZATION,
@@ -19,7 +19,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
 
-  { path: ROUTH_PATHS.ADMIN, component: CreateCardComponent, canActivate: [AuthGuard] },
+  { path: ROUTH_PATHS.ADMIN, component: AdminPageComponent, canActivate: [AuthGuard] },
   { path: '**', component: PageErrorComponent },
 ];
 

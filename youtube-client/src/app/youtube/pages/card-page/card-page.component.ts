@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 
 import { ActivatedRoute } from '@angular/router';
 import { AppStateService } from 'src/app/shared/app-state.service';
-import { ISearchItem } from '../../models/search-item.model';
+import { IVideoTransformed } from '../../models/search-item.model';
 
 @Component({
   selector: 'app-card-page',
@@ -18,7 +18,7 @@ export class CardPageComponent implements OnInit {
     private route: ActivatedRoute,
   ) {}
 
-  public card: ISearchItem | undefined;
+  public card: IVideoTransformed | undefined;
 
   ngOnInit() {
     this.appStateService.fetchCard(this.route.snapshot.params['id']);

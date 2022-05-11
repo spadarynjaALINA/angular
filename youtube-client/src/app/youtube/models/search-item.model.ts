@@ -53,3 +53,32 @@ export interface Ivideo {
   id: Iid;
   snippet: ISnippet;
 }
+
+export interface IVideoTransformed {
+  img: string;
+  title: string;
+  id: string;
+  publishedAt: string;
+  description?: string;
+  statistic: {
+    viewCount: string;
+    likeCount: string;
+    dislikeCount: string;
+    commentCount: string;
+  };
+}
+export class IVideoModel {
+  constructor(
+    public img: string,
+    public title: string,
+    public id: string,
+    public publishedAt: string,
+
+    public statistic: {
+      viewCount: string;
+      likeCount: string;
+      dislikeCount: string;
+      commentCount: string;
+    },
+  ) {}
+}

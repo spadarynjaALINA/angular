@@ -1,9 +1,10 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, EMPTY, map, Observable } from 'rxjs';
-import { ISearchItem } from '../models/search-item.model';
+import { IVideoTransformed } from '../models/search-item.model';
 import { API } from 'src/app/constants';
 import { ISearchResponse, ISearchResponse2 } from '../models/search-response.model';
+import { videoTransform } from 'src/app/shared/utils';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +25,7 @@ export class YoutubeHttpService {
     );
   }
 
-  createSearchRequestCards(ids: string[]): Observable<ISearchItem[]> {
+  createSearchRequestCards(ids: string[]): Observable<IVideoTransformed[]> {
     const IDS = ids.join(',');
     const params = new HttpParams()
       .set('key', API.KEY)
@@ -33,7 +34,7 @@ export class YoutubeHttpService {
 
     return this.http.get<ISearchResponse>(API.VIDEOS_URL, { params }).pipe(
       catchError(() => EMPTY),
-      map((response) => response.items),
+      map((response) => response.items.map((item) => videoTransform(item))),
     );
   }
 }
