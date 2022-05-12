@@ -8,7 +8,7 @@ export function createToken(): string {
 }
 export function videoTransform({ id, snippet, statistics }: ISearchItem) {
   return {
-    img: snippet.thumbnails.maxres.url,
+    img: snippet.thumbnails.maxres?.url,
     title: snippet.title,
     id,
     publishedAt: snippet.publishedAt,

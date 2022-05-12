@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { youtubeCardSelector } from 'src/app/redux/selectors/youtube-selectors';
+import { allCardsSelector } from 'src/app/redux/selectors/youtube-selectors';
 import { YoutubeState } from 'src/app/redux/state.models';
 import { AppStateService } from 'src/app/shared/app-state.service';
 import { IVideoTransformed } from '../../models/search-item.model';
@@ -27,9 +27,9 @@ export class CardsListPageComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.store.select(youtubeCardSelector).subscribe((cardList) => {
+    this.store.select(allCardsSelector).subscribe((cardList) => {
       if (cardList) {
-        this.cardList = cardList.cards;
+        this.cardList = cardList;
       }
     });
     this.subscriptions.add(

@@ -4,7 +4,7 @@ import { IVideoTransformed } from 'src/app/youtube/models/search-item.model';
 
 export const getYoutubeCards = createAction(
   '[YOUTUBE PAGE] CREATE YOUTUBE_REQUEST',
-  props<{ searchString$: string }>(),
+  props<{ searchString: string }>(),
 );
 export const createCustomCard = createAction(
   '[ADMIN PAGE] CREATE USER_CARD',

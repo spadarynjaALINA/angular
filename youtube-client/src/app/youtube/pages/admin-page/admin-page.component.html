@@ -2,11 +2,12 @@
   <h3>Create new card</h3>
   <div *ngFor="let field of fields">
     <label for="{{field.id}}">{{field.id }}</label>
-    <input type="text" id="{{field.id}}" formControlName="{{field.formControlName}}" autocomplete="off">
+    <input type="text" id="{{field.id}}" formControlName="{{field.formControlName}}" autocomplete="off"
+      (keyup)="isSubmit.next(false)">
     <span class="err"></span>
     <small *ngIf="!newCard.valid" class="text-error">{{createErrorMessage(field)}}</small>
   </div>
-
+  <span class="added" *ngIf="(isSubmit | async)===true">custom card added!</span>
   <div class="btn-wrap">
     <button class="create-btn" (click)="customCardSubmit()" [disabled]="!newCard.valid">Create card</button>
   </div>

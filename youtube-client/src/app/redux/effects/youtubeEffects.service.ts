@@ -16,8 +16,8 @@ export class YoutubeEffects {
   createYoutubeRequest = createEffect(() =>
     this.actions.pipe(
       ofType(getYoutubeCards),
-      switchMap(({ searchString$ }) =>
-        this.dataService.searchVideo(searchString$).pipe(
+      switchMap(({ searchString }) =>
+        this.dataService.searchVideo(searchString).pipe(
           map((cards) => getCardListSuccessful({ cards })),
           catchError((error) => of(getCardListFailed({ error }))),
         ),

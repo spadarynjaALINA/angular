@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { BehaviorSubject, debounceTime, distinctUntilChanged, filter } from 'rxjs';
 import { getYoutubeCards } from 'src/app/redux/actions/youtubeActions';
@@ -12,7 +12,7 @@ import { YoutubeService } from '../../../youtube/services/youtube.service';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
-export class SearchComponent {
+export class SearchComponent implements OnInit {
   constructor(
     public youtubeService: YoutubeService,
     public appStateService: AppStateService,
@@ -29,6 +29,6 @@ export class SearchComponent {
         distinctUntilChanged(),
         filter((value) => value.length > 2),
       )
-      .subscribe((searchString$) => this.store.dispatch(getYoutubeCards({ searchString$ })));
+      .subscribe((searchString) => this.store.dispatch(getYoutubeCards({ searchString })));
   }
 }

@@ -10,3 +10,7 @@ export const customCardSelector = createSelector(
   createFeatureSelector<YoutubeState>('youtubeState'),
   (state) => state.customCards,
 );
+export const allCardsSelector = createSelector(
+  createFeatureSelector<YoutubeState>('youtubeState'),
+  (state) => [...state.youtubeCards.cards, ...state.customCards],
+);
