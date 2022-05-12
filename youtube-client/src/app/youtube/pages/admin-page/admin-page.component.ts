@@ -3,7 +3,10 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { regExValidator } from 'src/app/auth/validation';
 import { IAdminForm } from '../../models/form.model';
 import { URL_REG_EX } from '../../../constants';
-import { DATE_REG_EX } from '../../../constants';
+import { IVideoTransformed } from '../../models/search-item.model';
+import { Store } from '@ngrx/store';
+import { YoutubeState } from 'src/app/redux/state.models';
+import { createCustomCard } from 'src/app/redux/actions/youtubeActions';
 
 @Component({
   selector: 'admin-page',
@@ -11,7 +14,11 @@ import { DATE_REG_EX } from '../../../constants';
   styleUrls: ['./admin-page.scss'],
 })
 export class AdminPageComponent {
-  constructor(public fb: FormBuilder) {}
+  constructor(public fb: FormBuilder, private store: Store<YoutubeState>) {}
+
+  public customCard: IVideoTransformed;
+
+  public counter = 0;
 
   public fields: IAdminForm[] = [
     {
@@ -39,19 +46,11 @@ export class AdminPageComponent {
       },
     },
     {
-      id: 'link',
-      formControlName: 'link',
+      id: 'video',
+      formControlName: 'video',
       messageError: {
         pattern: 'The video link is invalid',
         required: 'Please enter a link to the video',
-      },
-    },
-    {
-      id: 'date',
-      formControlName: 'date',
-      messageError: {
-        pattern: 'The date is invalid, format: DD/MM/YYYY',
-        required: 'Please enter a creation date',
       },
     },
   ];
@@ -60,11 +59,8 @@ export class AdminPageComponent {
     title: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
     description: ['', Validators.maxLength(255)],
     img: ['', [Validators.required, regExValidator(URL_REG_EX)]],
-    link: ['', [Validators.required, regExValidator(URL_REG_EX)]],
-    date: ['', [Validators.required, regExValidator(DATE_REG_EX)]],
+    video: ['', [Validators.required, regExValidator(URL_REG_EX)]],
   });
-
-  createNewCard() {}
 
   createErrorMessage(field: IAdminForm): string | undefined {
     let message: string | undefined;
@@ -85,5 +81,20 @@ export class AdminPageComponent {
         message = '';
     }
     return message;
+  }
+
+  customCardSubmit() {
+    const dateNow = new Date();
+    this.customCard = {
+      img: this.newCard.value.img,
+      title: this.newCard.value.title,
+      id: this.counter.toString(),
+      description: this.newCard.value.description,
+      publishedAt: dateNow.toString(),
+      statistic: { viewCount: '0' },
+    };
+    this.counter++;
+    console.log(this.counter, this.customCard);
+    this.store.dispatch(createCustomCard({ customCard: this.customCard }));
   }
 }

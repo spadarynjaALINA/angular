@@ -5,15 +5,27 @@ import { initialYoutubeState } from '../state';
 
 const reducer = createReducer(
   initialYoutubeState,
-  on(youtubeActions.createYoutubeRequest, (state) => {
-    console.log('state work', state);
+  on(youtubeActions.getYoutubeCards, (state) => {
+    console.log('getYoutubeCards', state);
     return { ...state, loading: true };
   }),
+  on(youtubeActions.createCustomCard, (state, { customCard }) => ({
+    ...state,
+    customCards: [...state.customCards, customCard],
+    loading: false,
+    loaded: true,
+  })),
 
-  on(youtubeActions.getCardListSuccessful, (state, { videos }) => {
-    console.log('state work', state);
-    return { ...state, videos, loading: false, loaded: true };
-  }),
+  on(youtubeActions.getCardListSuccessful, (state, { cards }) => ({
+    ...state,
+    youtubeCards: {
+      ...state.youtubeCards,
+      cards: [...cards],
+      loading: false,
+      loaded: true,
+    },
+  })),
+
   on(youtubeActions.getCardListFailed, (state, { error }) => {
     return { ...state, error, loading: false, loaded: false };
   }),

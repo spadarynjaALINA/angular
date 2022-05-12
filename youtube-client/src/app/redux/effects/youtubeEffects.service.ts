@@ -1,26 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Action } from '@ngrx/store';
-import { catchError, map, Observable, of, switchMap } from 'rxjs';
-import { AppStateService } from 'src/app/shared/app-state.service';
+import { catchError, map, of, switchMap } from 'rxjs';
+
+import { DataService } from 'src/app/shared/data.service';
 
 import {
-  createYoutubeRequest,
+  getYoutubeCards,
   getCardListFailed,
   getCardListSuccessful,
 } from '../actions/youtubeActions';
 @Injectable({ providedIn: 'any' })
 export class YoutubeEffects {
-  constructor(private actions: Actions, private appStateService: AppStateService) {}
+  constructor(private actions: Actions, private dataService: DataService) {}
 
-  createYoutubeRequest = createEffect(() => this.actions.pipe(
-      ofType(createYoutubeRequest),
-      switchMap(() =>
-        this.appStateService.getCardList('query').pipe(
-          map((videos) => getCardListSuccessful({ videos })),
+  createYoutubeRequest = createEffect(() =>
+    this.actions.pipe(
+      ofType(getYoutubeCards),
+      switchMap(({ searchString$ }) =>
+        this.dataService.searchVideo(searchString$).pipe(
+          map((cards) => getCardListSuccessful({ cards })),
           catchError((error) => of(getCardListFailed({ error }))),
         ),
       ),
-    );
+    ),
   );
 }

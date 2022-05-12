@@ -9,10 +9,10 @@ export class CustomCardModel {
   ) {}
 }
 export interface ICustomCard {
-  id: number;
+  id: string;
   title: string;
   description: string;
   img: string;
   video: string;
-  date: number;
+  publishedAt: string;
 }

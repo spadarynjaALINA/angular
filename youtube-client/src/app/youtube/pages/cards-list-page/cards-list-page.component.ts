@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { AppState } from 'src/app/redux/state.models';
+import { youtubeCardSelector } from 'src/app/redux/selectors/youtube-selectors';
+import { YoutubeState } from 'src/app/redux/state.models';
 import { AppStateService } from 'src/app/shared/app-state.service';
 import { IVideoTransformed } from '../../models/search-item.model';
 import { YoutubeService } from '../../services/youtube.service';
@@ -20,24 +21,22 @@ export class CardsListPageComponent implements OnInit, OnDestroy {
   private subscriptions = new Subscription();
 
   constructor(
-    private store: Store<AppState>,
     public youtubeService: YoutubeService,
     public appStateService: AppStateService,
-  ) {
-    console.log(this.store);
-  }
+    private store: Store<YoutubeState>,
+  ) {}
 
   ngOnInit(): void {
+    this.store.select(youtubeCardSelector).subscribe((cardList) => {
+      if (cardList) {
+        this.cardList = cardList.cards;
+      }
+    });
     this.subscriptions.add(
       this.appStateService.filterString$.subscribe((query) => (this.filterString = query)),
     );
     this.subscriptions.add(
       this.appStateService.sortBy$.subscribe((query) => (this.sortBy = query)),
-    );
-    this.subscriptions.add(
-      this.appStateService.cardList$.subscribe((videos) => {
-        this.cardList = videos;
-      }),
     );
   }
 

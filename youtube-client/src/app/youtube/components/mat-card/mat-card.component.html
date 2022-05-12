@@ -2,12 +2,12 @@
   <div class="img-wrap"><img mat-card-image [src]="card.img">
   </div>
   <mat-card-actions>
-    <app-card-statistic [card]="card"></app-card-statistic>
+    <app-card-statistic *ngIf="!!card.statistic" [card]="card"></app-card-statistic>
   </mat-card-actions>
   <mat-card-title [style.fontSize]="card.title.length < 60?'20px':'18px' ">{{card.title |
     titleLength:card.title.length}}</mat-card-title>
   <mat-card-footer>
     <button class="more" [routerLink]="card.id">more...</button>
-    <span class="time-decor " [appColor]="card.publishedAt"></span>
+    <span class="time-decor" [appColor]="card.publishedAt"></span>
   </mat-card-footer>
 </mat-card>

@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { map, Observable, switchMap } from 'rxjs';
+import { customCardSelector } from '../redux/selectors/youtube-selectors';
+import { YoutubeState } from '../redux/state.models';
 import { IVideoTransformed } from '../youtube/models/search-item.model';
 import { YoutubeService } from '../youtube/services/youtube.service';
 
@@ -7,7 +10,7 @@ import { YoutubeService } from '../youtube/services/youtube.service';
   providedIn: 'root',
 })
 export class DataService {
-  constructor(private youtubeService: YoutubeService) {}
+  constructor(private youtubeService: YoutubeService, private store: Store<YoutubeState>) {}
 
   public searchVideo(query: string): Observable<IVideoTransformed[]> {
     return this.youtubeService
@@ -16,6 +19,8 @@ export class DataService {
   }
 
   public getVideo(id: string): Observable<IVideoTransformed> {
-    return this.youtubeService.getVideoById([id]).pipe(map((video) => video[0]));
+    return id.length > 3
+      ? this.youtubeService.getVideoById([id]).pipe(map((video) => video[0]))
+      : this.store.select(customCardSelector).pipe(map((cardList) => cardList[+id]));
   }
 }

@@ -12,24 +12,7 @@ export class AppStateService {
 
   public sortBy$ = new BehaviorSubject<string>('');
 
-  public cardList$ = new BehaviorSubject<IVideoTransformed[]>([]);
-
   public card$ = new Subject<IVideoTransformed>();
 
   constructor(public dataService: DataService, private router: Router) {}
-
-  fetchCardList(query: string): void {
-    this.dataService.searchVideo(query).subscribe((data) => {
-      this.cardList$.next(data);
-    });
-  }
-
-  fetchCard(id: string): void {
-    this.dataService.getVideo(id).subscribe((data) => this.card$.next(data));
-  }
-
-  getCardList(query: string): void {
-    this.fetchCardList(query);
-    this.router.navigate(['/video']);
-  }
 }

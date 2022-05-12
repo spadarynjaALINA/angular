@@ -3,8 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 
 import { ActivatedRoute } from '@angular/router';
-import { AppStateService } from 'src/app/shared/app-state.service';
+
 import { IVideoTransformed } from '../../models/search-item.model';
+import { DataService } from 'src/app/shared/data.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-card-page',
@@ -14,14 +16,17 @@ import { IVideoTransformed } from '../../models/search-item.model';
 export class CardPageComponent implements OnInit {
   constructor(
     public location: Location,
-    private appStateService: AppStateService,
+    private dataService: DataService,
     private route: ActivatedRoute,
   ) {}
 
   public card: IVideoTransformed | undefined;
 
+  public card$ = new Subject<IVideoTransformed>();
+
   ngOnInit() {
-    this.appStateService.fetchCard(this.route.snapshot.params['id']);
-    this.appStateService.card$.subscribe((val) => (this.card = val));
+    this.dataService
+      .getVideo(this.route.snapshot.params['id'])
+      .subscribe((video) => (this.card = video));
   }
 }

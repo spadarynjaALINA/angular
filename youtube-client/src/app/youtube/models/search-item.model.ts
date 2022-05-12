@@ -58,13 +58,14 @@ export interface IVideoTransformed {
   img: string;
   title: string;
   id: string;
+  video?: string;
   publishedAt: string;
   description?: string;
-  statistic: {
+  statistic?: {
     viewCount: string;
-    likeCount: string;
-    dislikeCount: string;
-    commentCount: string;
+    likeCount?: string;
+    dislikeCount?: string;
+    commentCount?: string;
   };
 }
 export class IVideoModel {
