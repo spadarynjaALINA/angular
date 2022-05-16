@@ -1,17 +1,17 @@
 <button mat-icon-button>
   <mat-icon>visibility</mat-icon>
-  <span>{{card.viewCount}}</span>
+  <span *ngIf="card">{{card.viewCount}}</span>
 </button>
 
 <button mat-icon-button>
   <mat-icon>favorite</mat-icon>
-  <span>{{card.likeCount}}</span>
+  <span *ngIf="card">{{card.likeCount}}</span>
 </button>
 <button mat-icon-button>
   <mat-icon>heart_broken</mat-icon>
-  <span>{{card.dislikeCount}}</span>
+  <span *ngIf="card">{{card.dislikeCount}}</span>
 </button>
 <button mat-icon-button>
   <mat-icon>forum</mat-icon>
-  <span>{{card.commentCount}}</span>
+  <span *ngIf="card">{{card.commentCount}}</span>
 </button>

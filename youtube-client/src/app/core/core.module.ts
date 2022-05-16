@@ -10,14 +10,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { CreateCardComponent } from '../youtube/pages/create-card/create-card.component';
 import { RouterModule } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
-import { AppStateService } from '../shared/app-state.service';
-import { DataService } from '../shared/data.service';
+import { AppStateService } from '../youtube/services/app-state.service';
+import { DataService } from '../youtube/services/data.service';
 @NgModule({
   declarations: [
-    CreateCardComponent,
     HeaderComponent,
     PageErrorComponent,
     SearchComponent,

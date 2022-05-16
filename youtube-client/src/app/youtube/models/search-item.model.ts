@@ -34,10 +34,10 @@ interface ISnippet {
 }
 export interface IStatistics {
   viewCount: string;
-  likeCount: string;
-  dislikeCount: string;
-  favoriteCount: string;
-  commentCount: string;
+  likeCount?: string;
+  dislikeCount?: string;
+  favoriteCount?: string;
+  commentCount?: string;
 }
 export interface ISearchItem {
   kind: string;
@@ -52,4 +52,30 @@ export interface Ivideo {
   etag: string;
   id: Iid;
   snippet: ISnippet;
+}
+
+export interface IVideoTransformed {
+  img: string;
+  img2?: string;
+  title: string;
+  id: string;
+  video?: string;
+  publishedAt: string;
+  description?: string;
+  statistic?: IStatistics;
+}
+export class IVideoModel {
+  constructor(
+    public img: string,
+    public title: string,
+    public id: string,
+    public publishedAt: string,
+
+    public statistic: {
+      viewCount: string;
+      likeCount: string;
+      dislikeCount: string;
+      commentCount: string;
+    },
+  ) {}
 }

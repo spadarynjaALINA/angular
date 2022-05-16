@@ -1,34 +1,44 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ISearchItem } from 'src/app/youtube/models/search-item.model';
+import { IVideoTransformed } from 'src/app/youtube/models/search-item.model';
 
 @Pipe({
   name: 'sort',
 })
 export class SortPipe implements PipeTransform {
-  transform(cardList: ISearchItem[], search: string): ISearchItem[] {
+  transform(cardList: IVideoTransformed[], search: string): IVideoTransformed[] {
     if (search === 'upDirViews') {
-      const List = cardList.sort(
-        (a: ISearchItem, b: ISearchItem) => +b.statistics.viewCount - +a.statistics.viewCount,
-      );
+      const List = cardList
+        .slice()
+        .sort(
+          (a: IVideoTransformed, b: IVideoTransformed) =>
+            +b.statistic!.viewCount - +a.statistic!.viewCount,
+        );
 
       return List;
     } else if (search === 'downDirViews') {
-      const List = cardList.sort(
-        (a: ISearchItem, b: ISearchItem) => +a.statistics.viewCount - +b.statistics.viewCount,
-      );
+      const List = cardList
+        .slice()
+        .sort(
+          (a: IVideoTransformed, b: IVideoTransformed) =>
+            +a.statistic!.viewCount - +b.statistic!.viewCount,
+        );
 
       return List;
     } else if (search === 'upDirDate') {
-      const List = cardList.sort(
-        (a: ISearchItem, b: ISearchItem) =>
-          Date.parse(b.snippet.publishedAt) - Date.parse(a.snippet.publishedAt),
-      );
+      const List = cardList
+        .slice()
+        .sort(
+          (a: IVideoTransformed, b: IVideoTransformed) =>
+            Date.parse(b.publishedAt) - Date.parse(a.publishedAt),
+        );
       return List;
     } else if (search === 'downDirDate') {
-      const List = cardList.sort(
-        (a: ISearchItem, b: ISearchItem) =>
-          Date.parse(a.snippet.publishedAt) - Date.parse(b.snippet.publishedAt),
-      );
+      const List = cardList
+        .slice()
+        .sort(
+          (a: IVideoTransformed, b: IVideoTransformed) =>
+            Date.parse(a.publishedAt) - Date.parse(b.publishedAt),
+        );
       return List;
     }
     return cardList;

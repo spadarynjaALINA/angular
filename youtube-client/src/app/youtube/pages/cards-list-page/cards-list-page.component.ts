@@ -1,7 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { AppStateService } from 'src/app/shared/app-state.service';
-import { ISearchItem } from '../../models/search-item.model';
+import { allCardsSelector } from 'src/app/redux/selectors';
+import { YoutubeState } from 'src/app/redux/state.models';
+import { AppStateService } from 'src/app/youtube/services/app-state.service';
+import { IVideoTransformed } from '../../models/search-item.model';
 import { YoutubeService } from '../../services/youtube.service';
 @Component({
   selector: 'app-cards-list',
@@ -13,23 +16,27 @@ export class CardsListPageComponent implements OnInit, OnDestroy {
 
   public sortBy = '';
 
-  public cardList: ISearchItem[] | [] = [];
+  public cardList: IVideoTransformed[] | [] = [];
 
   private subscriptions = new Subscription();
 
-  constructor(public youtubeService: YoutubeService, public appStateService: AppStateService) {}
+  constructor(
+    public youtubeService: YoutubeService,
+    public appStateService: AppStateService,
+    private store: Store<YoutubeState>,
+  ) {}
 
   ngOnInit(): void {
+    this.store.select(allCardsSelector).subscribe((cardList) => {
+      if (cardList) {
+        this.cardList = cardList;
+      }
+    });
     this.subscriptions.add(
       this.appStateService.filterString$.subscribe((query) => (this.filterString = query)),
     );
     this.subscriptions.add(
       this.appStateService.sortBy$.subscribe((query) => (this.sortBy = query)),
-    );
-    this.subscriptions.add(
-      this.appStateService.cardList$.subscribe((videos) => {
-        this.cardList = videos;
-      }),
     );
   }
 

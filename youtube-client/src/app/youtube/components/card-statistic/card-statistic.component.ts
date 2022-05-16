@@ -7,5 +7,5 @@ import { IStatistics } from 'src/app/youtube/models/search-item.model';
   styleUrls: ['./card-statistic.component.scss'],
 })
 export class CardStatisticComponent {
-  @Input() public card: IStatistics;
+  @Input() public card: IStatistics | undefined;
 }

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { BehaviorSubject, debounceTime, distinctUntilChanged, filter } from 'rxjs';
-import { AppStateService } from 'src/app/shared/app-state.service';
-import { YoutubeService } from '../../../youtube/services/youtube.service';
+import { getYoutubeCards } from 'src/app/redux/actions';
+import { YoutubeState } from 'src/app/redux/state.models';
+
+import { AppStateService } from 'src/app/youtube/services/app-state.service';
 
 @Component({
   selector: 'app-search',
@@ -9,17 +12,17 @@ import { YoutubeService } from '../../../youtube/services/youtube.service';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  constructor(public youtubeService: YoutubeService, public appStateService: AppStateService) {}
+  constructor(public appStateService: AppStateService, private store: Store<YoutubeState>) {}
 
-  public searchString = new BehaviorSubject<string>('');
+  public searchString$ = new BehaviorSubject<string>('');
 
   ngOnInit() {
-    this.searchString
+    this.searchString$
       .pipe(
         debounceTime(500),
         distinctUntilChanged(),
         filter((value) => value.length > 2),
       )
-      .subscribe((value) => this.appStateService.getCardList(value));
+      .subscribe((searchString) => this.store.dispatch(getYoutubeCards({ searchString })));
   }
 }
