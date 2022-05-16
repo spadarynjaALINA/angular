@@ -1,19 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Location } from '@angular/common';
 
 import { ActivatedRoute } from '@angular/router';
 
 import { IVideoTransformed } from '../../models/search-item.model';
-import { DataService } from 'src/app/shared/data.service';
-import { Subject } from 'rxjs';
+import { DataService } from 'src/app/youtube/services/data.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-card-page',
   templateUrl: './card-page.component.html',
   styleUrls: ['./card-page.component.scss'],
 })
-export class CardPageComponent implements OnInit {
+export class CardPageComponent implements OnInit, OnDestroy {
   constructor(
     public location: Location,
     private dataService: DataService,
@@ -22,11 +22,15 @@ export class CardPageComponent implements OnInit {
 
   public card: IVideoTransformed | undefined;
 
-  public card$ = new Subject<IVideoTransformed>();
+  public subscription = new Subscription();
 
   ngOnInit() {
-    this.dataService
+    this.subscription = this.dataService
       .getVideo(this.route.snapshot.params['id'])
-      .subscribe((video) => (this.card = video));
+      .subscribe((video: IVideoTransformed | undefined) => (this.card = video));
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

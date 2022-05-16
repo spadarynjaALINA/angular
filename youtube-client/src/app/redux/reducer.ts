@@ -1,12 +1,19 @@
-import * as youtubeActions from '../actions/youtubeActions';
+import * as youtubeActions from './actions';
 import { Action, createReducer, on } from '@ngrx/store';
-import { YoutubeState } from '../state.models';
-import { initialYoutubeState } from '../state';
+import { YoutubeState } from './state.models';
+import { initialYoutubeState } from './state';
 
 const reducer = createReducer(
   initialYoutubeState,
   on(youtubeActions.getYoutubeCards, (state) => {
-    return { ...state, loading: true, loaded: false };
+    return {
+      ...state,
+      youtubeCards: {
+        ...state.youtubeCards,
+        loading: true,
+        loaded: false,
+      },
+    };
   }),
   on(youtubeActions.createCustomCard, (state, { customCard }) => {
     return { ...state, customCards: [...state.customCards, customCard] };
@@ -25,9 +32,17 @@ const reducer = createReducer(
   }),
 
   on(youtubeActions.getCardListFailed, (state, { error }) => {
-    return { ...state, error, loading: false, loaded: false };
+    return {
+      ...state,
+      error,
+      youtubeCards: {
+        ...state.youtubeCards,
+        loading: false,
+        loaded: false,
+      },
+    };
   }),
 );
-export function youtubeReducer(state: YoutubeState, action: Action) {
+export function Reducer(state: YoutubeState, action: Action) {
   return reducer(state, action);
 }

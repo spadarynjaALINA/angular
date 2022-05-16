@@ -1,6 +1,6 @@
-<div class="card-page-wap" *ngIf="card">
+<div class="card-page-wrap" *ngIf="card">
   <button class="back-btn" routerLink="/video"></button>
-  <img [src]="card.img" alt="card picture">
+  <img [src]="card.img?card.img:card.img2" alt="card picture">
   <div class="description-wrap">
     <div>
       <div class="title-wrap">
@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <app-card-statistic [card]="card"></app-card-statistic>
+    <app-card-statistic [card]="card.statistic"></app-card-statistic>
     <span class="colored" [appColor]="card.publishedAt"></span>
   </div>
 </div>

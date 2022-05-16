@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { allCardsSelector } from 'src/app/redux/selectors/youtube-selectors';
+import { allCardsSelector } from 'src/app/redux/selectors';
 import { YoutubeState } from 'src/app/redux/state.models';
-import { AppStateService } from 'src/app/shared/app-state.service';
+import { AppStateService } from 'src/app/youtube/services/app-state.service';
 import { IVideoTransformed } from '../../models/search-item.model';
 import { YoutubeService } from '../../services/youtube.service';
 @Component({

@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, EMPTY, map, Observable, tap } from 'rxjs';
+import { catchError, EMPTY, map, Observable } from 'rxjs';
 import { IVideoTransformed } from '../models/search-item.model';
 import { API } from 'src/app/constants';
 import { ISearchResponse, ISearchResponse2 } from '../models/search-response.model';
@@ -21,7 +21,6 @@ export class YoutubeHttpService {
       .set('part', API.PATH);
     return this.http.get<ISearchResponse2>(API.SEARCH_URL, { params }).pipe(
       catchError(() => EMPTY),
-      tap((res) => console.log(res)),
       map((response) => response.items.map((items) => items.id.videoId)),
     );
   }

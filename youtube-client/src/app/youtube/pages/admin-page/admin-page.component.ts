@@ -6,7 +6,7 @@ import { URL_REG_EX } from '../../../constants';
 import { IVideoTransformed } from '../../models/search-item.model';
 import { Store } from '@ngrx/store';
 import { YoutubeState } from 'src/app/redux/state.models';
-import { createCustomCard } from 'src/app/redux/actions/youtubeActions';
+import { createCustomCard } from 'src/app/redux/actions';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
@@ -21,7 +21,7 @@ export class AdminPageComponent {
 
   public counter = 0;
 
-  public isSubmit = new BehaviorSubject<boolean>(false);
+  public isSubmit$ = new BehaviorSubject<boolean>(false);
 
   public fields: IAdminForm[] = [
     {
@@ -97,7 +97,7 @@ export class AdminPageComponent {
       statistic: { viewCount: '0' },
     };
     this.counter++;
-    this.isSubmit.next(true);
+    this.isSubmit$.next(true);
     this.newCard.reset();
     this.store.dispatch(createCustomCard({ customCard: this.customCard }));
   }

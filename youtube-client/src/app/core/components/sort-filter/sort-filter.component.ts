@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AppStateService } from 'src/app/shared/app-state.service';
+import { AppStateService } from 'src/app/youtube/services/app-state.service';
 
 import {
   UP_DIRECTION_DATE,

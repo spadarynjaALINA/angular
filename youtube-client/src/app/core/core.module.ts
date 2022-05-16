@@ -12,8 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RouterModule } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
-import { AppStateService } from '../shared/app-state.service';
-import { DataService } from '../shared/data.service';
+import { AppStateService } from '../youtube/services/app-state.service';
+import { DataService } from '../youtube/services/data.service';
 @NgModule({
   declarations: [
     HeaderComponent,

@@ -9,6 +9,7 @@ export function createToken(): string {
 export function videoTransform({ id, snippet, statistics }: ISearchItem) {
   return {
     img: snippet.thumbnails.maxres?.url,
+    img2: snippet.thumbnails.high?.url,
     title: snippet.title,
     id,
     publishedAt: snippet.publishedAt,
