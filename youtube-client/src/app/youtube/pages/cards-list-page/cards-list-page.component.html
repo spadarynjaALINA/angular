@@ -1,4 +1,4 @@
-<div class="card-list" *ngIf="cardList ">
+<div class="card-list" *ngIf="cardList">
   <app-mat-card *ngFor="let card of cardList | filter:filterString | sort:sortBy" [card]="card"
     [appColor]="card.publishedAt">
   </app-mat-card>
